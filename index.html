@@ -6,14 +6,12 @@
     <title>Flashcard Quy Chế - Sổ tay Giảng viên HVKTQS 2020</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
             min-height: 100vh;
             color: #333;
         }
-
         .header {
             background: rgba(255,255,255,0.1);
             backdrop-filter: blur(10px);
@@ -25,17 +23,8 @@
             z-index: 100;
             border-bottom: 1px solid rgba(255,255,255,0.2);
         }
-
-        .header h1 {
-            font-size: 1.3em;
-            margin-bottom: 5px;
-        }
-
-        .header p {
-            font-size: 0.85em;
-            opacity: 0.8;
-        }
-
+        .header h1 { font-size: 1.3em; margin-bottom: 5px; }
+        .header p { font-size: 0.85em; opacity: 0.8; }
         .controls {
             display: flex;
             flex-wrap: wrap;
@@ -45,7 +34,6 @@
             padding: 15px 20px;
             background: rgba(255,255,255,0.05);
         }
-
         .controls select, .controls input {
             padding: 8px 12px;
             border: 1px solid rgba(255,255,255,0.3);
@@ -55,15 +43,9 @@
             font-size: 0.9em;
             outline: none;
         }
-
         .controls select option { color: #333; background: white; }
         .controls input::placeholder { color: rgba(255,255,255,0.5); }
-
-        .controls .btn-group {
-            display: flex;
-            gap: 5px;
-        }
-
+        .controls .btn-group { display: flex; gap: 5px; }
         .btn {
             padding: 8px 16px;
             border: none;
@@ -73,16 +55,12 @@
             font-weight: 600;
             transition: all 0.3s;
         }
-
-        .btn-primary { background: #4CAF50; color: white; }
-        .btn-primary:hover { background: #45a049; }
         .btn-secondary { background: #2196F3; color: white; }
         .btn-secondary:hover { background: #1976D2; }
         .btn-warning { background: #FF9800; color: white; }
         .btn-warning:hover { background: #F57C00; }
         .btn-danger { background: #f44336; color: white; }
         .btn-danger:hover { background: #d32f2f; }
-
         .stats {
             display: flex;
             gap: 15px;
@@ -92,13 +70,11 @@
             font-size: 0.85em;
             flex-wrap: wrap;
         }
-
         .stat-item {
             background: rgba(255,255,255,0.1);
             padding: 5px 12px;
             border-radius: 20px;
         }
-
         .progress-bar-container {
             width: 100%;
             max-width: 600px;
@@ -108,15 +84,12 @@
             border-radius: 3px;
             overflow: hidden;
         }
-
         .progress-bar {
             height: 100%;
             background: linear-gradient(90deg, #4CAF50, #8BC34A);
             border-radius: 3px;
             transition: width 0.5s;
         }
-
-        /* View modes */
         .view-toggle {
             display: flex;
             gap: 5px;
@@ -124,7 +97,6 @@
             border-radius: 8px;
             padding: 3px;
         }
-
         .view-toggle button {
             padding: 6px 12px;
             border: none;
@@ -135,13 +107,10 @@
             font-size: 0.85em;
             transition: all 0.3s;
         }
-
         .view-toggle button.active {
             background: rgba(255,255,255,0.25);
             color: white;
         }
-
-        /* Flashcard View */
         .flashcard-container {
             display: flex;
             justify-content: center;
@@ -149,13 +118,11 @@
             padding: 30px 20px;
             min-height: 60vh;
         }
-
         .flashcard-wrapper {
             perspective: 1000px;
             width: 100%;
             max-width: 700px;
         }
-
         .flashcard {
             width: 100%;
             min-height: 350px;
@@ -164,9 +131,7 @@
             transition: transform 0.6s;
             transform-style: preserve-3d;
         }
-
         .flashcard.flipped { transform: rotateY(180deg); }
-
         .flashcard-face {
             position: absolute;
             width: 100%;
@@ -181,18 +146,15 @@
             text-align: center;
             box-shadow: 0 20px 60px rgba(0,0,0,0.3);
         }
-
         .flashcard-front {
             background: linear-gradient(135deg, #667eea, #764ba2);
             color: white;
         }
-
         .flashcard-back {
             background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
             color: #333;
             transform: rotateY(180deg);
         }
-
         .card-category {
             font-size: 0.75em;
             text-transform: uppercase;
@@ -203,46 +165,19 @@
             border-radius: 20px;
             background: rgba(255,255,255,0.2);
         }
-
-        .flashcard-back .card-category {
-            background: rgba(0,0,0,0.1);
-        }
-
-        .card-number {
-            font-size: 0.8em;
-            opacity: 0.7;
-            margin-bottom: 15px;
-        }
-
-        .card-question {
-            font-size: 1.2em;
-            line-height: 1.6;
-            font-weight: 600;
-        }
-
-        .card-answer {
-            font-size: 1em;
-            line-height: 1.8;
-            text-align: left;
-            width: 100%;
-        }
-
+        .flashcard-back .card-category { background: rgba(0,0,0,0.1); }
+        .card-number { font-size: 0.8em; opacity: 0.7; margin-bottom: 15px; }
+        .card-question { font-size: 1.2em; line-height: 1.6; font-weight: 600; }
+        .card-answer { font-size: 1em; line-height: 1.8; text-align: left; width: 100%; }
         .card-answer ul { padding-left: 20px; }
         .card-answer li { margin-bottom: 5px; }
-
-        .card-hint {
-            font-size: 0.8em;
-            opacity: 0.6;
-            margin-top: 20px;
-        }
-
+        .card-hint { font-size: 0.8em; opacity: 0.6; margin-top: 20px; }
         .nav-buttons {
             display: flex;
             justify-content: center;
             gap: 15px;
             padding: 20px;
         }
-
         .nav-btn {
             width: 50px;
             height: 50px;
@@ -255,21 +190,12 @@
             align-items: center;
             justify-content: center;
         }
-
         .nav-btn:hover { transform: scale(1.1); }
-        .nav-prev { background: rgba(255,255,255,0.2); color: white; }
-        .nav-next { background: rgba(255,255,255,0.2); color: white; }
+        .nav-prev, .nav-next { background: rgba(255,255,255,0.2); color: white; }
         .nav-shuffle { background: #FF9800; color: white; }
         .nav-bookmark { background: transparent; border: 2px solid rgba(255,255,255,0.3); color: white; font-size: 1.4em; }
         .nav-bookmark.bookmarked { background: #f44336; border-color: #f44336; }
-
-        /* List View */
-        .list-container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
+        .list-container { max-width: 900px; margin: 0 auto; padding: 20px; }
         .list-item {
             background: rgba(255,255,255,0.95);
             border-radius: 12px;
@@ -278,9 +204,7 @@
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             transition: all 0.3s;
         }
-
         .list-item:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.2); }
-
         .list-question {
             padding: 15px 20px;
             cursor: pointer;
@@ -288,9 +212,7 @@
             align-items: flex-start;
             gap: 12px;
         }
-
         .list-question:hover { background: rgba(0,0,0,0.02); }
-
         .list-num {
             background: linear-gradient(135deg, #667eea, #764ba2);
             color: white;
@@ -304,23 +226,9 @@
             font-weight: 700;
             flex-shrink: 0;
         }
-
-        .list-q-text {
-            flex: 1;
-            font-weight: 600;
-            line-height: 1.5;
-            padding-top: 5px;
-        }
-
-        .list-toggle {
-            color: #764ba2;
-            font-size: 1.2em;
-            padding-top: 5px;
-            transition: transform 0.3s;
-        }
-
+        .list-q-text { flex: 1; font-weight: 600; line-height: 1.5; padding-top: 5px; }
+        .list-toggle { color: #764ba2; font-size: 1.2em; padding-top: 5px; transition: transform 0.3s; }
         .list-item.open .list-toggle { transform: rotate(180deg); }
-
         .list-answer {
             max-height: 0;
             overflow: hidden;
@@ -328,27 +236,9 @@
             background: #f8f9ff;
             border-top: 1px solid #eee;
         }
-
         .list-item.open .list-answer { max-height: 2000px; }
-
-        .list-answer-content {
-            padding: 15px 20px 15px 68px;
-            line-height: 1.8;
-            color: #555;
-        }
-
+        .list-answer-content { padding: 15px 20px 15px 68px; line-height: 1.8; color: #555; }
         .list-answer-content strong { color: #333; }
-
-        .list-cat-tag {
-            display: inline-block;
-            font-size: 0.7em;
-            padding: 2px 8px;
-            border-radius: 10px;
-            background: rgba(102, 126, 234, 0.1);
-            color: #667eea;
-            margin-left: 5px;
-        }
-
         .section-header {
             color: white;
             padding: 20px 0 10px;
@@ -356,17 +246,13 @@
             border-bottom: 2px solid rgba(255,255,255,0.2);
             margin-bottom: 15px;
         }
-
-        /* Keyboard shortcuts hint */
         .shortcuts {
             text-align: center;
             color: rgba(255,255,255,0.4);
             font-size: 0.75em;
             padding: 10px;
         }
-
         .hidden { display: none !important; }
-
         @media (max-width: 600px) {
             .header h1 { font-size: 1em; }
             .controls { gap: 8px; }
@@ -379,30 +265,30 @@
 </head>
 <body>
     <div class="header">
-        <h1>Flashcard Quy Che - So tay Giang vien HVKTQS 2020</h1>
-        <p>220 cau hoi & dap an - On tap quy che dao tao</p>
+        <h1>📚 Flashcard Quy Chế - Sổ tay Giảng viên HVKTQS 2020</h1>
+        <p>115 câu hỏi &amp; đáp án - Ôn tập quy chế đào tạo</p>
     </div>
 
     <div class="controls">
         <select id="categoryFilter">
-            <option value="all">Tat ca phan (220 cau)</option>
+            <option value="all">Tất cả phần (115 câu)</option>
         </select>
-        <input type="text" id="searchInput" placeholder="Tim kiem cau hoi..." style="min-width:200px;">
+        <input type="text" id="searchInput" placeholder="🔍 Tìm kiếm câu hỏi..." style="min-width:200px;">
         <div class="view-toggle">
             <button class="active" onclick="setView('card')" id="viewCard">Flashcard</button>
-            <button onclick="setView('list')" id="viewList">Danh sach</button>
+            <button onclick="setView('list')" id="viewList">Danh sách</button>
         </div>
         <div class="btn-group">
-            <button class="btn btn-warning" onclick="shuffleCards()">Xao tron</button>
-            <button class="btn btn-secondary" onclick="showBookmarked()">Da danh dau</button>
-            <button class="btn btn-danger" onclick="resetProgress()">Dat lai</button>
+            <button class="btn btn-warning" onclick="shuffleCards()">🔀 Xáo trộn</button>
+            <button class="btn btn-secondary" onclick="showBookmarked()">⭐ Đã đánh dấu</button>
+            <button class="btn btn-danger" onclick="resetProgress()">🔄 Đặt lại</button>
         </div>
     </div>
 
     <div class="stats">
-        <div class="stat-item">Cau: <strong id="currentNum">1</strong>/<strong id="totalNum">220</strong></div>
-        <div class="stat-item">Da xem: <strong id="viewedNum">0</strong></div>
-        <div class="stat-item">Danh dau: <strong id="bookmarkNum">0</strong></div>
+        <div class="stat-item">📖 Câu: <strong id="currentNum">1</strong>/<strong id="totalNum">115</strong></div>
+        <div class="stat-item">👁️ Đã xem: <strong id="viewedNum">0</strong></div>
+        <div class="stat-item">⭐ Đánh dấu: <strong id="bookmarkNum">0</strong></div>
         <div class="progress-bar-container">
             <div class="progress-bar" id="progressBar" style="width:0%"></div>
         </div>
@@ -416,7 +302,7 @@
                         <div class="card-category" id="cardCategory"></div>
                         <div class="card-number" id="cardNumber"></div>
                         <div class="card-question" id="cardQuestion"></div>
-                        <div class="card-hint">Click hoac nhan Space de xem dap an</div>
+                        <div class="card-hint">💡 Click hoặc nhấn Space để xem đáp án</div>
                     </div>
                     <div class="flashcard-face flashcard-back">
                         <div class="card-category" id="cardCategoryBack"></div>
@@ -427,12 +313,12 @@
             </div>
         </div>
         <div class="nav-buttons">
-            <button class="nav-btn nav-prev" onclick="prevCard()" title="Cau truoc (phim <-)">&#9664;</button>
-            <button class="nav-btn nav-bookmark" id="bookmarkBtn" onclick="toggleBookmark()" title="Danh dau">&#9733;</button>
-            <button class="nav-btn nav-shuffle" onclick="shuffleCards()" title="Xao tron">&#8645;</button>
-            <button class="nav-btn nav-next" onclick="nextCard()" title="Cau tiep (phim ->)">&#9654;</button>
+            <button class="nav-btn nav-prev" onclick="prevCard()" title="Câu trước (phím ←)">◀</button>
+            <button class="nav-btn nav-bookmark" id="bookmarkBtn" onclick="toggleBookmark()" title="Đánh dấu (phím B)">★</button>
+            <button class="nav-btn nav-shuffle" onclick="shuffleCards()" title="Xáo trộn (phím S)">⇅</button>
+            <button class="nav-btn nav-next" onclick="nextCard()" title="Câu tiếp (phím →)">▶</button>
         </div>
-        <div class="shortcuts">Phim tat: Space = lat the | &#8592;&#8594; = chuyen cau | B = danh dau | S = xao tron</div>
+        <div class="shortcuts">⌨️ Phím tắt: Space = lật thẻ | ←→ = chuyển câu | B = đánh dấu | S = xáo trộn</div>
     </div>
 
     <div id="listView" class="hidden">
@@ -441,157 +327,123 @@
 
     <script>
     const flashcards = [
-    // PHAN I: GIOI THIEU CHUNG VE HVKTQS (22 cau)
-    {id:1, cat:"I. Gioi thieu chung", q:"Tien than cua Hoc vien Ky thuat Quan su la gi? Duoc thanh lap theo quyet dinh nao, ngay thang nam nao?", a:"Tien than la <strong>\"Phan hieu II Dai hoc Bach khoa Ha Noi\"</strong>, duoc thanh lap theo <strong>Quyet dinh so 146/CP ngay 08/08/1966</strong> cua Hoi dong Chinh phu, voi nhiem vu dao tao can bo ky thuat quan su."},
-    {id:2, cat:"I. Gioi thieu chung", q:"Ngay truyen thong cua Hoc vien KTQS la ngay nao? Tai sao?", a:"<strong>Ngay 28/10</strong> hang nam. Vi ngay 28/10/1966, Bo Dai hoc va Trung hoc chuyen nghiep, Bo Quoc phong to chuc Le cong bo quyet dinh thanh lap Phan Hieu II Dai hoc Bach Khoa dong thoi khai giang khoa dao tao 1 tai Thu do Ha Noi."},
-    {id:3, cat:"I. Gioi thieu chung", q:"Truong Dai hoc KTQS duoc doi ten tu \"Phan hieu II Dai hoc Bach khoa\" vao ngay thang nam nao?", a:"<strong>Ngay 18/6/1968</strong>, Thu tuong Chinh phu quyet dinh doi ten thanh truong Dai hoc KTQS."},
-    {id:4, cat:"I. Gioi thieu chung", q:"Hoc vien KTQS duoc thanh lap tren co so truong Dai hoc KTQS vao ngay nao? Theo quyet dinh nao?", a:"<strong>Ngay 15/12/1981</strong>, Bo truong Bo Quoc phong ky <strong>Quyet dinh so 412 QD/QP</strong> thanh lap Hoc vien Ky thuat Quan su truc thuoc Bo Quoc phong."},
-    {id:5, cat:"I. Gioi thieu chung", q:"Hoc vien KTQS duoc phep mang them ten dan su la gi?", a:"<strong>Dai hoc Ky thuat Le Quy Don</strong>, theo quyet dinh ngay 06/5/1981 cua Chu tich Hoi dong Bo truong."},
-    {id:6, cat:"I. Gioi thieu chung", q:"Neu su mang cua Hoc vien Ky thuat Quan su.", a:"Dao tao nguon nhan luc chat luong cao, nghien cuu phat trien, san xuat che thu, chuyen giao cong nghe tien tien va hoi nhap quoc te, gop phan dac luc vao su nghiep xay dung va bao ve to quoc, phat trien nganh khoa hoc cong nghe quan su Viet Nam."},
-    {id:7, cat:"I. Gioi thieu chung", q:"Trinh bay 4 nhiem vu chinh cua Hoc vien KTQS.", a:"<ul><li>Dao tao can bo ky thuat trinh do DH, sau DH, can bo chi huy tham muu ky thuat cap chien thuat - chien dich</li><li>Nghien cuu khoa hoc, phat trien cong nghe phuc vu nhiem vu xay dung tiem luc quan doi</li><li>Dao tao nguon nhan luc phuc vu CNH, HDH dat nuoc</li><li>Dao tao can bo ky thuat cho quan doi Lao va Campuchia</li></ul>"},
-    {id:8, cat:"I. Gioi thieu chung", q:"Hoc vien duoc cong nhan la mot trong bao nhieu truong DH trong diem quoc gia? Vao ngay nao?", a:"Mot trong <strong>15 truong dai hoc trong diem quoc gia</strong>, duoc cong nhan ngay <strong>31/01/2008</strong>."},
-    {id:9, cat:"I. Gioi thieu chung", q:"Hoc vien duoc phong tang danh hieu Anh hung LLVTND thoi ky doi moi vao ngay nao?", a:"Ngay <strong>21/12/2005</strong>."},
-    {id:10, cat:"I. Gioi thieu chung", q:"Ke ten it nhat 5 danh hieu, huan chuong cao quy cua Hoc vien KTQS.", a:"<ul><li>Huan chuong Quan cong hang Nhat (1984, 1996)</li><li>Huan chuong Doc lap hang Nhat (2001)</li><li>Huan chuong Ho Chi Minh (2011)</li><li>Huan chuong Doc lap hang Nhi (2016)</li><li>Don vi Anh hung LLVTND thoi ky doi moi (2005)</li></ul>"},
-    {id:11, cat:"I. Gioi thieu chung", q:"Tru so chinh (Khu A) cua Hoc vien dat tai dau?", a:"So <strong>236, Duong Hoang Quoc Viet, Bac Tu Liem, Ha Noi</strong>."},
-    {id:12, cat:"I. Gioi thieu chung", q:"Ke ten tat ca cac co so (khu) cua Hoc vien KTQS.", a:"<ul><li>Khu A (co so chinh): 236 Hoang Quoc Viet, Bac Tu Liem, HN</li><li>Khu Xuan Phuong: Phuong Canh, Nam Tu Liem, HN</li><li>Khu Hoa Lac: Dong Xuan, Thach That, HN</li><li>Khu 212: Xuan Dinh, Bac Tu Liem, HN</li><li>Khu 125: Lien Bao, Vinh Yen, Vinh Phuc</li><li>Co so Phia Nam: 71 Cong Hoa, Tan Binh, TP HCM</li></ul>"},
-
-    // PHAN II: QUY DINH CHE DO LAM VIEC CBGD (QD 2409)
-    {id:13, cat:"II. Che do lam viec CBGD", q:"Can bo giang day tai Hoc vien KTQS gom nhung chuc danh nao?", a:"Gom: <strong>Giang vien (GV), Giang vien chinh (GVC), Giang vien cao cap (GVCC), Pho giao su (PGS), Giao su (GS)</strong> tham gia cong tac dao tao tai Hoc vien."},
-    {id:14, cat:"II. Che do lam viec CBGD", q:"Phan biet can bo giang day chuyen trach, kiêm nhiem va thinh giang.", a:"<ul><li><strong>Chuyen trach</strong>: Bien che chinh thuc trong cac Khoa, Vien, Trung tam</li><li><strong>Kiêm nhiem</strong>: Trong Hoc vien nhung khong thuoc bien che cua cac Khoa, co tham gia dao tao</li><li><strong>Thinh giang</strong>: Can bo khoa hoc ngoai Hoc vien hoac CB da nghi huu duoc moi tham gia dao tao</li></ul>"},
-    {id:15, cat:"II. Che do lam viec CBGD", q:"Gio chuan la gi?", a:"Gio chuan la <strong>don vi thoi gian quy doi</strong> de thuc hien mot cong viec tuong duong cho <strong>01 tiet (45 phut)</strong> giang day ly thuyet truc tiep tren giang duong, bao gom thoi gian lao dong can thiet truoc, trong va sau tiet giang."},
-    {id:16, cat:"II. Che do lam viec CBGD", q:"Tong so ngay lam viec trong nam cua CBGD la bao nhieu? Tuong duong bao nhieu gio?", a:"<strong>220 ngay</strong>, tuong duong <strong>1760 gio</strong>. (365 ngay - 10 Tet - 11 le - 20 he - 104 T7+CN = 220 ngay)"},
-    {id:17, cat:"II. Che do lam viec CBGD", q:"Thoi gian phan bo cho nghi Tet, nghi le, nghi he, nghi thu bay - chu nhat trong nam?", a:"<ul><li>Nghi Tet nguyen dan: <strong>10 ngay</strong></li><li>Nghi cac ngay le: <strong>11 ngay</strong></li><li>Nghi he: <strong>20 ngay</strong></li><li>Nghi thu bay va chu nhat: <strong>104 ngay</strong></li></ul>"},
-    {id:18, cat:"II. Che do lam viec CBGD", q:"Phan bo thoi gian lam viec (gio) cho giang day, KHCN va hoat dong khac theo tung chuc danh?", a:"<ul><li><strong>GV</strong>: Giang day 900h, KHCN 600h, Khac 260h</li><li><strong>GVC/PGS</strong>: Giang day 900h, KHCN 650h, Khac 210h</li><li><strong>GVCC/GS</strong>: Giang day 900h, KHCN 700h, Khac 160h</li><li>Tong cong: 1760h cho tat ca chuc danh</li></ul>"},
-    {id:19, cat:"II. Che do lam viec CBGD", q:"Dinh muc gio chuan giang day doi voi tung chuc danh: GV, GVC/PGS, GS/GVCC?", a:"<ul><li><strong>Giao su va GVCC</strong>: 320 gio chuan</li><li><strong>Pho giao su va GVC</strong>: 300 gio chuan</li><li><strong>Giang vien</strong>: 270 gio chuan</li></ul>"},
-    {id:20, cat:"II. Che do lam viec CBGD", q:"GS va PGS phai danh bao nhieu phan tram dinh muc cho dao tao sau dai hoc?", a:"<ul><li><strong>Giao su</strong>: it nhat <strong>50%</strong> dinh muc (160 gio chuan)</li><li><strong>Pho giao su</strong>: it nhat <strong>40%</strong> dinh muc (120 gio chuan)</li></ul>"},
-    {id:21, cat:"II. Che do lam viec CBGD", q:"Dinh muc gio chuan KHCN doi voi tung chuc danh giang day?", a:"<ul><li><strong>GS va GVCC</strong>: 420 gio chuan</li><li><strong>PGS va GVC</strong>: 390 gio chuan</li><li><strong>Giang vien</strong>: 360 gio chuan</li></ul>"},
-    {id:22, cat:"II. Che do lam viec CBGD", q:"Lo trinh thuc hien dinh muc gio chuan KHCN qua cac nam hoc?", a:"<ul><li>Nam hoc 2019-2020: dinh muc bang <strong>50%</strong></li><li>Nam hoc 2020-2021: dinh muc bang <strong>75%</strong></li><li>Tu nam hoc 2021-2022 tro di: dinh muc bang <strong>100%</strong></li></ul>"},
-    {id:23, cat:"II. Che do lam viec CBGD", q:"Ty le dinh muc gio chuan (%) doi voi Giam doc, Chinh uy va Pho Giam doc, Pho Chinh uy?", a:"<ul><li><strong>Giam doc, Chinh uy</strong>: 10%</li><li><strong>Pho Giam doc, Pho Chinh uy</strong>: 15%</li></ul>"},
-    {id:24, cat:"II. Che do lam viec CBGD", q:"Ty le dinh muc gio chuan cua Chu nhiem khoa khi giu chuc bi thu, pho bi thu dang uy, va con lai?", a:"<ul><li>Giu chuc <strong>bi thu dang uy</strong>: 50%</li><li>Giu chuc <strong>pho bi thu dang uy</strong>: 60%</li><li><strong>Con lai</strong>: 70%</li></ul>"},
-    {id:25, cat:"II. Che do lam viec CBGD", q:"Ty le dinh muc cua Chu nhiem bo mon khi giu chuc bi thu chi bo va khi khong giu chuc vu Dang?", a:"<ul><li>Giu chuc <strong>bi thu chi bo</strong>: 75%</li><li><strong>Con lai</strong>: 80%</li></ul>"},
-    {id:26, cat:"II. Che do lam viec CBGD", q:"CBGD nu co con nho duoi 36 thang tuoi duoc mien giam bao nhieu %? Gioi han toi da?", a:"Duoc giam <strong>10%/01 con</strong>. Neu tham gia nhieu chuc vu quan ly thi tong mien giam khong vuot qua <strong>60%</strong> tong dinh muc gio chuan."},
-    {id:27, cat:"II. Che do lam viec CBGD", q:"Truong nhom nghien cuu manh va thanh vien nhom duoc giam bao nhieu % dinh muc gio chuan giang day?", a:"<ul><li><strong>Truong nhom</strong>: giam 50% dinh muc gio chuan giang day</li><li><strong>Moi thanh vien</strong>: giam 15% dinh muc gio chuan giang day</li></ul>"},
-    {id:28, cat:"II. Che do lam viec CBGD", q:"CBGD chuyen trach tham gia nhieu chuc vu quan ly thi tong mien giam toi da bao nhieu %?", a:"Khong vuot qua <strong>50%</strong> tong dinh muc gio chuan."},
-    {id:29, cat:"II. Che do lam viec CBGD", q:"So gio vuot tai cua CBGD khong duoc vuot qua bao nhieu % dinh muc trong nam hoc?", a:"Khong vuot qua <strong>50%</strong> dinh muc gio chuan trong nam hoc cua can bo do. Truong hop dac biet do Giam doc Hoc vien xem xet, quyet dinh."},
-    {id:30, cat:"II. Che do lam viec CBGD", q:"Khi CBGD chua hoan thanh dinh muc gio chuan giang day thi xu ly the nao?", a:"Lay so <strong>vuot tai cua gio chuan KHCN</strong> bu vao dinh muc giang day."},
-    {id:31, cat:"II. Che do lam viec CBGD", q:"Khi CBGD chua hoan thanh dinh muc gio chuan KHCN thi xu ly the nao?", a:"Lay so <strong>vuot tai cua gio chuan giang day</strong> bu vao. Dong thoi Giam doc Hoc vien tuy theo muc do, hoan canh cu the de xem xet khi danh gia ket qua thuc hien nhiem vu."},
-
-    // PHAN III: QUY DOI GIO CHUAN
-    {id:32, cat:"III. Quy doi gio chuan", q:"Giang day ly thuyet trong giang duong: Lop <= 75 HV, 76-100 HV, >= 101 HV duoc quy doi bao nhieu gio chuan/tiet?", a:"<ul><li>Lop <strong><= 75 HV</strong>: 1 gio chuan/tiet</li><li>Lop <strong>76-100 HV</strong>: 1,1 gio chuan/tiet</li><li>Lop <strong>>= 101 HV</strong>: 1,2 gio chuan/tiet</li></ul>"},
-    {id:33, cat:"III. Quy doi gio chuan", q:"Giang day ngoai thao truong, bai tap, dien tap cuoi khoa, giang day ban dem duoc tinh bao nhieu gio chuan/tiet?", a:"<strong>1,2 gio chuan/tiet</strong> (tru thoi gian hanh quan da ngoai hoac ren luyen the luc)."},
-    {id:34, cat:"III. Quy doi gio chuan", q:"Huong dan bai tap, thi nghiem, thuc hanh, thao luan duoc tinh bao nhieu gio chuan/tiet?", a:"<strong>0,7 gio chuan/tiet</strong>."},
-    {id:35, cat:"III. Quy doi gio chuan", q:"Dien tap, thuc hanh co ban dan that duoc tinh bao nhieu gio chuan/tiet?", a:"<strong>2 gio chuan/tiet</strong>."},
-    {id:36, cat:"III. Quy doi gio chuan", q:"Cong viec vao ngay nghi le va chu nhat duoc tinh he so bao nhieu lan?", a:"He so <strong>2,0 lan</strong> so voi ngay thuong tuong ung."},
-    {id:37, cat:"III. Quy doi gio chuan", q:"Day luyen thi Olympic duoc tinh bao nhieu gio chuan/tiet?", a:"<strong>1,5 gio chuan/tiet</strong>."},
-    {id:38, cat:"III. Quy doi gio chuan", q:"Giao vien chuyen trach kiem nhiem co van hoc tap duoc tinh bao nhieu gio chuan/lop?", a:"<strong>60 gio chuan/lop</strong>."},
-    {id:39, cat:"III. Quy doi gio chuan", q:"Huong dan do an (khoa luan) tot nghiep duoc tinh bao nhieu gio chuan/DA?", a:"<strong>25 gio chuan/DA</strong>."},
-    {id:40, cat:"III. Quy doi gio chuan", q:"Cham thi van dap, thi viet, thi tot nghiep duoc tinh bao nhieu gio chuan?", a:"<ul><li>Cham thi <strong>van dap</strong>: 0,3 gio chuan/HV</li><li>Cham thi <strong>viet</strong>: 0,25 gio chuan/bai</li><li>Cham thi <strong>tot nghiep</strong>: 0,5 gio chuan/HV</li></ul>"},
-    {id:41, cat:"III. Quy doi gio chuan", q:"Xay dung moi Chuong trinh dao tao va De cuong chi tiet hoc phan duoc tinh bao nhieu gio chuan?", a:"<ul><li>Xay dung moi <strong>CTDT</strong>: 50 gio chuan/CT</li><li>Xay dung moi <strong>DCCTHP</strong>: 10 gio chuan/TC</li><li>Sua doi, bo sung DCCTHP: 5 gio chuan/TC</li></ul>"},
-    {id:42, cat:"III. Quy doi gio chuan", q:"Giang day cho cao hoc va tien si duoc tinh bao nhieu gio chuan/tiet?", a:"<ul><li>Cac hoc phan cho <strong>cao hoc</strong>: 1,5 gio chuan/tiet</li><li>Cac hoc phan cho <strong>tien si</strong>: 2 gio chuan/tiet</li></ul>"},
-    {id:43, cat:"III. Quy doi gio chuan", q:"Huong dan luan van tot nghiep cao hoc duoc tinh bao nhieu gio chuan?", a:"<strong>45 gio chuan/luan van</strong>."},
-    {id:44, cat:"III. Quy doi gio chuan", q:"Huong dan NCS he tap trung (1 CBHD) va he khong tap trung duoc tinh bao nhieu gio chuan/NCS/nam?", a:"<ul><li>He <strong>tap trung</strong> (1 CBHD): 65 gio chuan/NCS/nam</li><li>He <strong>khong tap trung</strong> (1 CBHD): 50 gio chuan/NCS/nam</li></ul>"},
-    {id:45, cat:"III. Quy doi gio chuan", q:"Day 100% bang ngoai ngu (khong phai hoc phan ngoai ngu) va day song ngu duoc tinh bao nhieu gio chuan/tiet?", a:"<ul><li>Day <strong>100% ngoai ngu</strong>: 2 gio chuan/tiet</li><li>Day <strong>song ngu</strong>: 1,5 gio chuan/tiet</li></ul>"},
-    {id:46, cat:"III. Quy doi gio chuan", q:"Bai bao dang tren tap chi ISI, Scopus va Hoi nghi quoc te duoc tinh bao nhieu gio chuan?", a:"<ul><li>Tap chi <strong>ISI</strong>: 280 gio chuan/bai</li><li>Tap chi <strong>Scopus</strong>: 230 gio chuan/bai</li><li><strong>Ky yeu HNKH quoc te</strong>: 200 gio chuan/bai</li><li>Tap chi <strong>trong nuoc ISSN</strong>: 150 gio chuan/bai</li></ul>"},
-    {id:47, cat:"III. Quy doi gio chuan", q:"Bang phat minh, bang doc quyen sang che, bang giai phap huu ich duoc tinh bao nhieu gio chuan?", a:"<ul><li><strong>Bang phat minh</strong>: 900 gio chuan</li><li><strong>Doc quyen sang che</strong>: 400 gio chuan</li><li><strong>Giai phap huu ich</strong>: 300 gio chuan</li></ul>"},
-    {id:48, cat:"III. Quy doi gio chuan", q:"Giao trinh moi va giao trinh tai ban duoc tinh bao nhieu gio chuan/trang tac gia?", a:"<ul><li><strong>Giao trinh moi</strong>: 1,2 gio chuan/trang tac gia</li><li><strong>Giao trinh tai ban</strong> (co bo sung, sua doi): 0,5 gio chuan/trang tac gia</li><li><strong>Sach chuyen khao</strong>: 2 gio chuan/trang tac gia</li></ul>"},
-
-    // PHAN IV: TIEU CHUAN GV TOT, GV GIOI
-    {id:49, cat:"IV. GV tot, GV gioi", q:"Giang vien gioi muc 1 phai dat bao nhieu % tai giang day va KHCN? Yeu cau ve cong trinh NCKH?", a:"<ul><li>Dat tu <strong>100% tai giang day</strong> tro len, >= 2/3 tai TKB</li><li>Dat tu <strong>100% tai KHCN</strong> tro len</li><li>Co it nhat <strong>02 cong trinh NCKH</strong> (trong do co it nhat 01 bai bao KH)</li><li>De tai NCKH phai nghiem thu dat kha tro len</li></ul>"},
-    {id:50, cat:"IV. GV tot, GV gioi", q:"Giang vien gioi muc 2 phai dat bao nhieu % tai giang day va KHCN?", a:"<ul><li>Dat tu <strong>100% tai giang day</strong>, >= 2/3 tai TKB</li><li>Dat tu <strong>75% tai KHCN</strong> tro len</li><li>Co it nhat <strong>01 cong trinh NCKH</strong>, nghiem thu kha tro len</li></ul>"},
-    {id:51, cat:"IV. GV tot, GV gioi", q:"Tieu chuan giang vien tot ve tai giang day va KHCN?", a:"<ul><li><strong>Giang day</strong>: Dat tu 100% tro len, trong do co it nhat 45 tiet theo TKB</li><li><strong>KHCN</strong>: Dat tu 50% tro len</li><li>Co it nhat 01 cong trinh NCKH</li></ul>"},
-    {id:52, cat:"IV. GV tot, GV gioi", q:"Quy dinh so luong GV gioi muc 1, muc 2 va GV tot cho moi Khoa?", a:"<ul><li><strong>GV gioi muc 1</strong>: Khoa < 30 GV: 01 nguoi; cu 30 GV tiep theo duoc bau them 01</li><li><strong>GV gioi muc 2</strong>: Khong qua 8% tong so GV cua Khoa</li><li><strong>GV tot</strong>: Khong qua 10% tong so GV cua Khoa</li></ul>"},
-    {id:53, cat:"IV. GV tot, GV gioi", q:"Doi voi Khoa Ngoai ngu, BM Toan: neu khong co hoat dong KHCN thi tai giang day phai dat bao nhieu %?", a:"Tai giang day phai dat tu <strong>150% dinh muc gio chuan</strong> tro len (trong do dat >= 100% tai TKB theo dinh muc)."},
-    {id:54, cat:"IV. GV tot, GV gioi", q:"GV phai co it nhat bao nhieu buoi du giang va xep loai gi de duoc xet GV tot/gioi?", a:"Co it nhat <strong>02 buoi du giang</strong>, tat ca cac buoi du giang duoc danh gia xep loai <strong>tot</strong>."},
-    {id:55, cat:"IV. GV tot, GV gioi", q:"Ket qua binh xet o cap BM, Khoa va HV phai dat bao nhieu phieu tin nhiem?", a:"Dat it nhat <strong>2/3 so phieu tin nhiem</strong> cua Bo mon, cua Hoi dong KH&DT cap Khoa va cap Hoc vien."},
-
-    // PHAN VI: CHUAN NANG LUC NGOAI NGU (QD 4119)
-    {id:56, cat:"VI. Chuan ngoai ngu", q:"Ngoai ngu chinh de danh gia chuan nang luc ngoai ngu tai HVKTQS la gi?", a:"<strong>Tieng Anh</strong> la ngoai ngu chinh duoc su dung de danh gia chuan nang luc ngoai ngu cua can bo, giao vien."},
-    {id:57, cat:"VI. Chuan ngoai ngu", q:"Tu 01/01/2019, chuan nang luc ngoai ngu duoc danh gia bang cac chung chi nao?", a:"Cac chung chi tieng Anh quoc te: <strong>IELTS, TOEIC, TOEFL PBT, TOEFL CBT, TOEFL IBT, Cambridge Tests</strong> do cac trung tam ngoai ngu la dai dien chinh thuc cua cac to chuc khao thi quoc te tai Viet Nam cap."},
-    {id:58, cat:"VI. Chuan ngoai ngu", q:"GV day tieng Anh co chuc danh giang vien phai dat trinh do tieng Anh bac nao? Ngoai ngu thu hai?", a:"<ul><li>Tieng Anh: <strong>C1</strong></li><li>Ngoai ngu thu hai: <strong>B1</strong></li></ul>"},
-    {id:59, cat:"VI. Chuan ngoai ngu", q:"GV day tieng Anh co chuc danh GVC, GVCC, TS, PGS, GS phai dat trinh do tieng Anh bac nao?", a:"<ul><li>Tieng Anh: <strong>C2</strong></li><li>Ngoai ngu thu hai: <strong>B1</strong></li></ul>"},
-    {id:60, cat:"VI. Chuan ngoai ngu", q:"GV day cac nganh khac: GV phai dat bac nao? GVC, PGS, GS phai dat bac nao?", a:"<ul><li><strong>Giang vien</strong>: Tieng Anh <strong>B1</strong></li><li><strong>GVC, GVCC, TS, PGS, GS</strong>: Tieng Anh <strong>B2</strong></li></ul>"},
-    {id:61, cat:"VI. Chuan ngoai ngu", q:"Can bo Phong HTQT phai dat trinh do tieng Anh bac nao? Ty le quan so dat B2?", a:"Tren <strong>50% quan so</strong> phai dat <strong>B2</strong>. Truong phong va Truong ban trong vong 03 nam giu chuc phai dat B2, so con lai phai dat <strong>B1</strong>."},
-    {id:62, cat:"VI. Chuan ngoai ngu", q:"Neu cac truong hop duoc mien danh gia chuan nang luc ngoai ngu.", a:"<ul><li>Co bang DH/ThS/TS o nuoc ngoai (tieng Anh), thoi han khong qua 5 nam</li><li>Co chung chi tieng Anh tuong ung con gia tri</li><li>Co bang DH ngoai ngu tieng Anh he chinh quy, khong qua 5 nam</li><li>GV day ngoai ngu: nam >= 55 tuoi, nu >= 50 tuoi</li><li>CB day cac nganh khac: tu 48 tuoi tro len</li></ul>"},
-    {id:63, cat:"VI. Chuan ngoai ngu", q:"Hau qua khi CBGV khong dat chuan ngoai ngu?", a:"<ul><li>Khong xet di dao tao ThS (neu khong co B1), TS (neu khong co B2)</li><li>Khong xet chuc danh SQ CM-KT-NV, GS, PGS, danh hieu nha giao, thi dua khen thuong</li><li>Moi lan khong dat: keo dai nien han quan ham hoac he so luong them 01 nam</li><li>Sau 03 lan lien tiep khong dat: xem xet dieu chuyen cong tac</li></ul>"},
-    {id:64, cat:"VI. Chuan ngoai ngu", q:"Diem IELTS toi thieu de dat B1, B2, C1, C2?", a:"<ul><li><strong>B1</strong>: IELTS 4.5</li><li><strong>B2</strong>: IELTS 5.5</li><li><strong>C1</strong>: IELTS 6.5</li><li><strong>C2</strong>: IELTS 7.5+</li></ul>"},
-    {id:65, cat:"VI. Chuan ngoai ngu", q:"Diem TOEIC toi thieu de dat B1, B2, C1?", a:"<ul><li><strong>B1</strong>: TOEIC 450</li><li><strong>B2</strong>: TOEIC 600</li><li><strong>C1</strong>: TOEIC 850</li></ul>"},
-
-    // PHAN VII: CHUAN KY NANG SU DUNG CNTT
-    {id:66, cat:"VII. Chuan CNTT", q:"Doi tuong ap dung Quy dinh chuan ky nang CNTT? Gioi han tuoi?", a:"Can bo giang day chuyen trach, can bo giang day kiem nhiem tai Hoc vien KTQS co <strong>tuoi doi duoi 48 tuoi</strong>."},
-    {id:67, cat:"VII. Chuan CNTT", q:"Chuan ky nang CNTT co ban gom bao nhieu mo dun? Ke ten.", a:"Gom <strong>06 mo dun</strong>: IU01 (Hieu biet CNTT co ban), IU02 (Su dung may tinh co ban), IU03 (Xu ly van ban co ban), IU04 (Su dung bang tinh co ban), IU05 (Su dung trinh chieu co ban), IU06 (Su dung Internet co ban)."},
-    {id:68, cat:"VII. Chuan CNTT", q:"De dat chuan CNTT nang cao phai dat bao nhieu mo dun nang cao (tren nen CNTT co ban)?", a:"Phai dat chuan CNTT co ban va dong thoi dap ung yeu cau cua toi thieu <strong>03 mo dun</strong> trong so 09 mo dun nang cao."},
-    {id:69, cat:"VII. Chuan CNTT", q:"CBGD Khoa Ngoai ngu, Khoa Mac-Lenin, Khoa CTD-CTCT, Khoa Quan su phai dat chuan CNTT nao?", a:"Phai dat <strong>Chuan ky nang CNTT co ban</strong>."},
-    {id:70, cat:"VII. Chuan CNTT", q:"CBGD cac don vi con lai phai dat chuan CNTT nao?", a:"Phai dat <strong>Chuan ky nang CNTT nang cao</strong>."},
-
-    // PHAN VIII: NGND, NGUT (ND 27/2015)
-    {id:71, cat:"VIII. NGND, NGUT", q:"Nha giao Nhan dan phai co thoi gian truc tiep giang day tu bao nhieu nam? Can bo QLGD tu bao nhieu nam?", a:"<ul><li>Nha giao: truc tiep giang day tu <strong>20 nam</strong> tro len</li><li>Can bo QLGD: cong tac trong nganh tu <strong>25 nam</strong>, trong do co 15 nam truc tiep giang day</li></ul>"},
-    {id:72, cat:"VIII. NGND, NGUT", q:"Nha giao Uu tu phai co thoi gian truc tiep giang day tu bao nhieu nam? Da bao nhieu lan duoc tang CSTD co so?", a:"<ul><li>Truc tiep giang day tu <strong>15 nam</strong> tro len</li><li><strong>07 lan</strong> duoc tang danh hieu CSTD co so hoac GV day gioi cung cap</li><li>01 lan CSTD cap tinh, bo va 01 lan Bang khen cap tinh, bo</li></ul>"},
-    {id:73, cat:"VIII. NGND, NGUT", q:"Doi voi giang vien DH, yeu cau ve sang kien, de tai, giao trinh, bai bao de xet NGUT?", a:"<ul><li>Chu tri 03 sang kien hoac 02 de tai cap tinh/bo</li><li>Chu bien 01 giao trinh hoac tham gia 02 giao trinh</li><li>Tac gia chinh 05 bai bao khoa hoc</li><li>Huong dan chinh 02 NCS hoac 05 hoc vien cao hoc bao ve thanh cong</li></ul>"},
-
-    // PHAN IX: QUY CHE HOAT DONG BO MON
-    {id:74, cat:"IX. Quy che bo mon", q:"Bo mon duoc xac dinh o vi tri nao trong he thong to chuc cua Hoc vien?", a:"Bo mon la <strong>to chuc hanh chinh cap thu ba</strong> trong he thong to chuc cua Hoc vien; la <strong>to chuc hoc thuat cao nhat</strong> thuoc linh vuc chuyen nganh va la don vi co so to chuc thuc hien cac hoat dong dao tao, NCKH."},
-    {id:75, cat:"IX. Quy che bo mon", q:"Neu 2 chuc nang chinh cua bo mon.", a:"<ul><li>Tham muu, de xuat dinh huong va truc tiep trien khai cac hoat dong dao tao, NCKH va cac hoat dong hoc thuat</li><li>Xay dung doi ngu giao vien, nhan vien chuyen mon ky thuat va co so vat chat dap ung yeu cau nhiem vu</li></ul>"},
-    {id:76, cat:"IX. Quy che bo mon", q:"Bo mon co duoc phep tao lap quy tu cac de tai, du an NCKH khong? Dieu kien?", a:"<strong>Co</strong>. Bo mon duoc phep tao lap quy tu cac de tai, du an NCKH, hop dong dich vu KHCN de su dung cho viec phat trien NCKH. Viec lap va su dung quy phai <strong>cong khai, minh bach</strong> va tuan theo quy dinh ve quan ly tai chinh."},
-    {id:77, cat:"IX. Quy che bo mon", q:"Che do lam viec cua bo mon: dau nam hoc, hang tuan, vai tro CN BM?", a:"<ul><li><strong>Dau nam hoc</strong>: xay dung ke hoach nam hoc, phan cong nhiem vu</li><li><strong>Hang tuan</strong>: to chuc giao ban theo quy dinh</li><li><strong>CN BM</strong>: chu tri va chiu trach nhiem moi hoat dong cua BM, tap trung chi dao phat trien chuyen mon, hoc thuat</li></ul>"},
-    {id:78, cat:"IX. Quy che bo mon", q:"Moi quan he giua bo mon voi khoa, cac co quan trong HV va don vi quan ly hoc vien?", a:"<ul><li>Voi Khoa: <strong>quan he cap tren - cap duoi</strong> (chiu su chi huy truc tiep cua BCN Khoa)</li><li>Voi cac co quan HV: chiu su <strong>huong dan, kiem tra, giam sat</strong> theo chuc nang</li><li>Voi don vi QLHV: <strong>quan he phoi hop</strong></li></ul>"},
-
-    // PHAN X: CHE DO MOI GIANG
-    {id:79, cat:"X. Che do moi giang", q:"Che do moi giang duoc thuc hien khi nao (3 dieu kien)?", a:"<ul><li>Doi ngu GV co huu co tong gio giang vuot qua <strong>2 lan tong dinh muc</strong> gio chuan giang day cua BM/nhom mon hoc</li><li>Mon hoc moi ma Hoc vien <strong>chua co giao vien</strong> giang day</li><li>Cac truong hop dac biet do <strong>Giam doc Hoc vien</strong> quyet dinh</li></ul>"},
-    {id:80, cat:"X. Che do moi giang", q:"Tieu chuan cua giao vien moi giang la gi?", a:"<ul><li>Ly lich ro rang, pham chat chinh tri, tu cach dao duc tot, kha nang su pham phu hop</li><li>Trong 3 nam gan nhat tham gia hoat dong chuyen mon lien quan</li><li>Co chuc danh GS, PGS va GVC hoac hoc vi TSKH, tien si</li></ul>"},
-
-    // PHAN XI: KHUNG CTDT THAC SI
-    {id:81, cat:"XI. CTDT Thac si", q:"Thoi luong CTDT thac si la bao lau? Bao nhieu tin chi?", a:"<strong>02 nam</strong>, <strong>60-65 tin chi</strong> (cho ca dinh huong ung dung va dinh huong nghien cuu)."},
-    {id:82, cat:"XI. CTDT Thac si", q:"Mot tin chi duoc tinh bang bao nhieu tiet ly thuyet hoac thuc hanh?", a:"<strong>15 tiet ly thuyet</strong> hoac <strong>30 tiet thuc hanh</strong>, thi nghiem, bai tap, thao luan, tieu luan."},
-    {id:83, cat:"XI. CTDT Thac si", q:"So tin chi danh cho luan van tot nghiep thac si la bao nhieu?", a:"<strong>12 tin chi</strong>."},
-
-    // PHAN XII: KHUNG CTDT TIEN SI
-    {id:84, cat:"XII. CTDT Tien si", q:"Chuong trinh dao tao tien si gom bao nhieu phan? Ke ten.", a:"Gom <strong>3 phan</strong>: <ul><li>Phan 1: Cac hoc phan bo sung</li><li>Phan 2: Cac hoc phan trinh do TS, tieu luan tong quan va chuyen de TS</li><li>Phan 3: Luan an tien si</li></ul>"},
-    {id:85, cat:"XII. CTDT Tien si", q:"Thoi gian dao tao tien si: nguoi co bang ThS va nguoi co bang DH?", a:"<ul><li>Nguoi co bang <strong>thac si</strong>: <strong>3 nam</strong> tap trung lien tuc</li><li>Nguoi co bang <strong>dai hoc</strong>: <strong>4 nam</strong> tap trung lien tuc</li></ul>"},
-    {id:86, cat:"XII. CTDT Tien si", q:"Tong so tin chi toi thieu cho NCS chua co bang ThS va da co bang ThS?", a:"<ul><li>NCS <strong>chua co bang ThS</strong>: toi thieu <strong>120 TC</strong></li><li>NCS <strong>da co bang ThS</strong>: toi thieu <strong>90 TC</strong></li></ul>"},
-    {id:87, cat:"XII. CTDT Tien si", q:"Luan an tien si co khoi luong toi da bao nhieu trang A4? Bao nhieu % la ket qua nghien cuu rieng?", a:"Khong qua <strong>150 trang A4</strong> (khong ke phu luc), trong do tren <strong>50%</strong> la trinh bay cac ket qua nghien cuu va bien luan cua rieng NCS."},
-    {id:88, cat:"XII. CTDT Tien si", q:"NCS phai cong bo toi thieu bao nhieu bai bao/bao cao KH? Yeu cau ve bai bao quoc te?", a:"Toi thieu <strong>02 bai bao hoac bao cao KH</strong>, trong do co <strong>01 bao cao KH dang trong ky yeu hoi thao quoc te co phan bien</strong> hoac 01 bai bao tren tap chi KH nuoc ngoai co phan bien."},
-
-    // PHAN XV: BAO VE LUAN VAN THAC SI
-    {id:89, cat:"XV. Bao ve LVTS", q:"Hoi dong cham LVTS KHONG du dieu kien lam viec trong nhung truong hop nao?", a:"<ul><li>Vang mat <strong>Chu tich</strong> Hoi dong</li><li>Vang mat <strong>Thu ky</strong> Hoi dong</li><li>Vang mat thanh vien co y kien <strong>khong dong y</strong> dua luan van ra bao ve</li><li>Vang mat tu <strong>02 thanh vien</strong> tro len</li><li>Hoc vien khong du suc khoe</li></ul>"},
-    {id:90, cat:"XV. Bao ve LVTS", q:"Diem luan van duoc cho toi da bao nhieu diem? Diem trinh bay? Diem cong trinh NCKH?", a:"<ul><li>Diem luan van: toi da <strong>8,5 diem</strong></li><li>Diem trinh bay: toi da <strong>0,5 diem</strong></li><li>Diem cong trinh NCKH: toi da <strong>1,0 diem</strong> (bai ISI/Scopus) hoac 0,7 hoac 0,5 tuy cap do</li></ul>"},
-    {id:91, cat:"XV. Bao ve LVTS", q:"Luan van dat yeu cau khi diem dat tu bao nhieu tro len?", a:"Dat tu <strong>5,5 diem</strong> tro len."},
-    {id:92, cat:"XV. Bao ve LVTS", q:"Chi cong diem NCKH khi diem luan van va trinh bay dat tu bao nhieu diem tro len?", a:"Dat tu <strong>8,0 diem</strong> tro len (khuyen nghi cua Hoc vien)."},
-    {id:93, cat:"XV. Bao ve LVTS", q:"Trong vong bao nhieu ngay sau bao ve, hoc vien phai chinh sua luan van va nop thu vien?", a:"Trong vong <strong>15 ngay</strong> ke tu ngay bao ve luan van."},
-
-    // PHAN XVI: DANH GIA KQHT VA THI LAI
-    {id:94, cat:"XVI. Thi & cham thi", q:"Ke ten cac hinh thuc thi ket thuc hoc phan tai HVKTQS.", a:"Thi tu luan; thi van dap; thi trac nghiem; trac nghiem ket hop tu luan; thi truc tuyen tren may tinh; bai tap tong hop; thi cac ky nang nghe, noi, doc, viet (ngoai ngu); bao cao, thuc hanh, bao ve do an."},
-    {id:95, cat:"XVI. Thi & cham thi", q:"Doi voi thi van dap, moi ban hoi thi khong qua bao nhieu HVSV/buoi? Bao nhieu giao vien/ban?", a:"Moi ban hoi thi khong qua <strong>25 HVSV/buoi</strong>. Moi ban phai dam bao <strong>02 giao vien</strong> cung nhom mon hoc."},
-    {id:96, cat:"XVI. Thi & cham thi", q:"So luong ma de thi toi thieu: tu luan va trac nghiem tren giay?", a:"<ul><li><strong>Tu luan</strong>: khong it hon 02 ma de thi</li><li><strong>Trac nghiem tren giay</strong>: khong it hon 04 ma de thi</li></ul>"},
-    {id:97, cat:"XVI. Thi & cham thi", q:"Diem bai thi duoc cham theo thang diem nao? Lam tron den bao nhieu?", a:"Thang diem <strong>10</strong> (tu 0 den 10), diem bai thi lam tron den <strong>0,5 diem</strong>."},
-    {id:98, cat:"XVI. Thi & cham thi", q:"Tat ca bai thi phai duoc cham bao nhieu vong?", a:"<strong>2 vong</strong> doc lap: Vong 1 cham tren <strong>phieu cham</strong>, Vong 2 cham truc tiep vao <strong>bai thi</strong>."},
-    {id:99, cat:"XVI. Thi & cham thi", q:"Hinh thuc thi nao KHONG duoc su dung khi thi lai?", a:"Khong su dung hinh thuc thi <strong>van dap</strong>."},
-    {id:100, cat:"XVI. Thi & cham thi", q:"Khi HVSV vi pham quy che thi, muc tru diem: khien trach, canh cao, dinh chi thi?", a:"<ul><li><strong>Khien trach</strong>: Tru 25% diem bai thi</li><li><strong>Canh cao</strong>: Tru 50% diem bai thi</li><li><strong>Dinh chi thi</strong>: Bai thi cho 0 diem</li></ul>"},
-    {id:101, cat:"XVI. Thi & cham thi", q:"Thoi han nop don de nghi xem xet lai diem thi la bao nhieu ngay?", a:"Trong vong <strong>15 ngay</strong> sau khi cong bo diem."},
-
-    // PHAN XVII: CHAM THI 2 VONG DOC LAP
-    {id:102, cat:"XVII. Cham thi 2 vong", q:"Khi diem 2 lan cham lech duoi 0,5d (KHTN) hoac duoi 1,0d (KHXH) thi xu ly the nao?", a:"Hai can bo cham thi <strong>thao luan thong nhat diem</strong>, ghi diem va ky vao bai thi."},
-    {id:103, cat:"XVII. Cham thi 2 vong", q:"Khi diem 2 lan cham lech tu 0,5 den 1,0d (KHTN) hoac tu 1,0 den 1,5d (KHXH) thi xu ly the nao?", a:"Hai CBCT thao luan va ghi lai bang <strong>bien ban</strong>, bao cao <strong>Truong nhom mon hoc</strong> de thong nhat diem. Neu khong thong nhat duoc thi Truong nhom mon hoc quyet dinh diem."},
-    {id:104, cat:"XVII. Cham thi 2 vong", q:"Khi diem 2 lan cham lech tren 1,0d (KHTN) hoac tren 1,5d (KHXH) thi lam gi?", a:"Truong nhom mon hoc to chuc <strong>cham lan thu 3</strong> truc tiep vao bai thi bang muc mau khac."},
-    {id:105, cat:"XVII. Cham thi 2 vong", q:"Khi ket qua 3 lan cham lech tren 2,0d (KHTN) hoac tren 2,5d (KHXH) thi xu ly the nao?", a:"Truong nhom mon hoc to chuc <strong>cham tap the</strong>. Cac CBCT va Truong nhom mon hoc ghi ro ho ten va ky vao bai thi. Diem cham lan nay la diem <strong>chinh thuc</strong>."},
-
-    // PHAN XVIII: TO CHUC LAM DATN
-    {id:106, cat:"XVIII. DATN ngoai HV", q:"Yeu cau ve trinh do doi voi can bo ngoai HV tham gia huong dan chinh DATN?", a:"Co hoc vi tu <strong>thac sy tro len</strong> va co it nhat <strong>10 nam kinh nghiem</strong> hoat dong trong linh vuc chuyen nganh. Giang vien Hoc vien tham gia huong dan phu."},
-    {id:107, cat:"XVIII. DATN ngoai HV", q:"Yeu cau doi voi can bo ngoai HV tham gia huong dan phu DATN?", a:"Co trinh do tu <strong>ky su tro len</strong> va co it nhat <strong>05 nam kinh nghiem</strong> hoat dong trong linh vuc chuyen nganh. Giang vien Hoc vien tham gia huong dan chinh."},
-    {id:108, cat:"XVIII. DATN ngoai HV", q:"So luong uy vien moi ngoai HV tham gia tieu ban cham bao ve DATN?", a:"<strong>01 nguoi/tieu ban</strong>."},
-
-    // PHAN XIII: HD NGOAI NGU - XET DE BAT QH
-    {id:109, cat:"XIII. HD ngoai ngu - QH", q:"Thoi diem ap dung huong dan ngoai ngu khi xet de bat quan ham, nang luong?", a:"Ap dung tu <strong>nam 2020</strong>. Tai thoi diem xet duyet cua Thuong vu Dang uy Hoc vien (thuong vao phien hop thang 3 hang nam)."},
-    {id:110, cat:"XIII. HD ngoai ngu - QH", q:"Tu nam 2021, tat ca Phong Ban (tru Phong HTQT) phai dat trinh do tieng Anh bac nao?", a:"Phai dat trinh do tieng Anh <strong>A2</strong> (theo dieu chinh cua Cuc Nha truong, Bo Tong tham muu)."},
-    {id:111, cat:"XIII. HD ngoai ngu - QH", q:"Thoi han su dung cua chung chi ngoai ngu khong quy dinh thoi han la bao nhieu?", a:"Hoc vien thong nhat thoi han su dung la <strong>02 nam</strong>."},
-    {id:112, cat:"XIII. HD ngoai ngu - QH", q:"Tu nam 2026, khi chung chi het han, can bo phai trinh chung chi moi trong toi da bao nhieu thang?", a:"Toi da <strong>36 thang</strong> ke tu ngay chung chi cu het thoi han."},
-
-    // PHAN XIV: HD NGOAI NGU - XET CHUC DANH SQ
-    {id:113, cat:"XIV. HD chuc danh SQ", q:"Ung vien xet chuc danh Giang vien (day cac nganh khac) phai co chung chi tieng Anh quoc te bac nao?", a:"Phai co chung chi <strong>B1</strong> tieng Anh quoc te con thoi han."},
-    {id:114, cat:"XIV. HD chuc danh SQ", q:"Ung vien xet chuc danh GVC, GVCC phai co chung chi tieng Anh quoc te bac nao?", a:"Phai co chung chi <strong>B2</strong> tieng Anh quoc te con thoi han."},
-    {id:115, cat:"XIV. HD chuc danh SQ", q:"Cac chung chi tieng Anh quoc te duoc chap nhan gom nhung gi?", a:"<strong>IELTS, TOEIC, TOEFL (PBT, CBT, IBT), Cambridge Test</strong>."}
+    {id:1, cat:"I. Giới thiệu chung", q:"Tiền thân của Học viện Kỹ thuật Quân sự là gì? Được thành lập theo quyết định nào, ngày tháng năm nào?", a:"Tiền thân là <strong>\"Phân hiệu II Đại học Bách khoa Hà Nội\"</strong>, được thành lập theo <strong>Quyết định số 146/CP ngày 08/08/1966</strong> của Hội đồng Chính phủ, với nhiệm vụ đào tạo cán bộ kỹ thuật quân sự."},
+    {id:2, cat:"I. Giới thiệu chung", q:"Ngày truyền thống của Học viện KTQS là ngày nào? Tại sao?", a:"<strong>Ngày 28/10</strong> hàng năm. Vì ngày 28/10/1966, Bộ Đại học và Trung học chuyên nghiệp, Bộ Quốc phòng tổ chức Lễ công bố quyết định thành lập Phân Hiệu II Đại học Bách Khoa đồng thời khai giảng khóa đào tạo 1 tại Thủ đô Hà Nội."},
+    {id:3, cat:"I. Giới thiệu chung", q:"Trường Đại học KTQS được đổi tên từ \"Phân hiệu II Đại học Bách khoa\" vào ngày tháng năm nào?", a:"<strong>Ngày 18/6/1968</strong>, Thủ tướng Chính phủ quyết định đổi tên thành trường Đại học KTQS."},
+    {id:4, cat:"I. Giới thiệu chung", q:"Học viện KTQS được thành lập trên cơ sở trường Đại học KTQS vào ngày nào? Theo quyết định nào?", a:"<strong>Ngày 15/12/1981</strong>, Bộ trưởng Bộ Quốc phòng ký <strong>Quyết định số 412 QĐ/QP</strong> thành lập Học viện Kỹ thuật Quân sự trực thuộc Bộ Quốc phòng."},
+    {id:5, cat:"I. Giới thiệu chung", q:"Học viện KTQS được phép mang thêm tên dân sự là gì?", a:"<strong>Đại học Kỹ thuật Lê Quý Đôn</strong>, theo quyết định ngày 06/5/1981 của Chủ tịch Hội đồng Bộ trưởng."},
+    {id:6, cat:"I. Giới thiệu chung", q:"Nêu sứ mạng của Học viện Kỹ thuật Quân sự.", a:"Đào tạo nguồn nhân lực chất lượng cao, nghiên cứu phát triển, sản xuất chế thử, chuyển giao công nghệ tiên tiến và hội nhập quốc tế, góp phần đắc lực vào sự nghiệp xây dựng và bảo vệ tổ quốc, phát triển ngành khoa học công nghệ quân sự Việt Nam."},
+    {id:7, cat:"I. Giới thiệu chung", q:"Trình bày 4 nhiệm vụ chính của Học viện KTQS.", a:"<ul><li>Đào tạo cán bộ kỹ thuật trình độ ĐH, sau ĐH, cán bộ chỉ huy tham mưu kỹ thuật cấp chiến thuật - chiến dịch</li><li>Nghiên cứu khoa học, phát triển công nghệ phục vụ nhiệm vụ xây dựng tiềm lực quân đội</li><li>Đào tạo nguồn nhân lực phục vụ CNH, HĐH đất nước</li><li>Đào tạo cán bộ kỹ thuật cho quân đội Lào và Campuchia</li></ul>"},
+    {id:8, cat:"I. Giới thiệu chung", q:"Học viện được công nhận là một trong bao nhiêu trường ĐH trọng điểm quốc gia? Vào ngày nào?", a:"Một trong <strong>15 trường đại học trọng điểm quốc gia</strong>, được công nhận ngày <strong>31/01/2008</strong>."},
+    {id:9, cat:"I. Giới thiệu chung", q:"Học viện được phong tặng danh hiệu Anh hùng LLVTND thời kỳ đổi mới vào ngày nào?", a:"Ngày <strong>21/12/2005</strong>."},
+    {id:10, cat:"I. Giới thiệu chung", q:"Kể tên ít nhất 5 danh hiệu, huân chương cao quý của Học viện KTQS.", a:"<ul><li>Huân chương Quân công hạng Nhất (1984, 1996)</li><li>Huân chương Độc lập hạng Nhất (2001)</li><li>Huân chương Hồ Chí Minh (2011)</li><li>Huân chương Độc lập hạng Nhì (2016)</li><li>Đơn vị Anh hùng LLVTND thời kỳ đổi mới (2005)</li></ul>"},
+    {id:11, cat:"I. Giới thiệu chung", q:"Trụ sở chính (Khu A) của Học viện đặt tại đâu?", a:"Số <strong>236, Đường Hoàng Quốc Việt, Bắc Từ Liêm, Hà Nội</strong>."},
+    {id:12, cat:"I. Giới thiệu chung", q:"Kể tên tất cả các cơ sở (khu) của Học viện KTQS.", a:"<ul><li>Khu A (cơ sở chính): 236 Hoàng Quốc Việt, Bắc Từ Liêm, HN</li><li>Khu Xuân Phương: Phương Canh, Nam Từ Liêm, HN</li><li>Khu Hoà Lạc: Đông Xuân, Thạch Thất, HN</li><li>Khu 212: Xuân Đỉnh, Bắc Từ Liêm, HN</li><li>Khu 125: Liên Bảo, Vĩnh Yên, Vĩnh Phúc</li><li>Cơ sở Phía Nam: 71 Cộng Hòa, Tân Bình, TP HCM</li></ul>"},
+    {id:13, cat:"II. Chế độ làm việc CBGD", q:"Cán bộ giảng dạy tại Học viện KTQS gồm những chức danh nào?", a:"Gồm: <strong>Giảng viên (GV), Giảng viên chính (GVC), Giảng viên cao cấp (GVCC), Phó giáo sư (PGS), Giáo sư (GS)</strong> tham gia công tác đào tạo tại Học viện."},
+    {id:14, cat:"II. Chế độ làm việc CBGD", q:"Phân biệt cán bộ giảng dạy chuyên trách, kiêm nhiệm và thỉnh giảng.", a:"<ul><li><strong>Chuyên trách</strong>: Biên chế chính thức trong các Khoa, Viện, Trung tâm</li><li><strong>Kiêm nhiệm</strong>: Trong Học viện nhưng không thuộc biên chế của các Khoa, có tham gia đào tạo</li><li><strong>Thỉnh giảng</strong>: Cán bộ khoa học ngoài Học viện hoặc CB đã nghỉ hưu được mời tham gia đào tạo</li></ul>"},
+    {id:15, cat:"II. Chế độ làm việc CBGD", q:"Giờ chuẩn là gì?", a:"Giờ chuẩn là <strong>đơn vị thời gian quy đổi</strong> để thực hiện một công việc tương đương cho <strong>01 tiết (45 phút)</strong> giảng dạy lý thuyết trực tiếp trên giảng đường, bao gồm thời gian lao động cần thiết trước, trong và sau tiết giảng."},
+    {id:16, cat:"II. Chế độ làm việc CBGD", q:"Tổng số ngày làm việc trong năm của CBGD là bao nhiêu? Tương đương bao nhiêu giờ?", a:"<strong>220 ngày</strong>, tương đương <strong>1760 giờ</strong>. (365 ngày - 10 Tết - 11 lễ - 20 hè - 104 T7+CN = 220 ngày)"},
+    {id:17, cat:"II. Chế độ làm việc CBGD", q:"Thời gian phân bổ cho nghỉ Tết, nghỉ lễ, nghỉ hè, nghỉ thứ bảy - chủ nhật trong năm?", a:"<ul><li>Nghỉ Tết nguyên đán: <strong>10 ngày</strong></li><li>Nghỉ các ngày lễ: <strong>11 ngày</strong></li><li>Nghỉ hè: <strong>20 ngày</strong></li><li>Nghỉ thứ bảy và chủ nhật: <strong>104 ngày</strong></li></ul>"},
+    {id:18, cat:"II. Chế độ làm việc CBGD", q:"Phân bổ thời gian làm việc (giờ) cho giảng dạy, KHCN và hoạt động khác theo từng chức danh?", a:"<ul><li><strong>GV</strong>: Giảng dạy 900h, KHCN 600h, Khác 260h</li><li><strong>GVC/PGS</strong>: Giảng dạy 900h, KHCN 650h, Khác 210h</li><li><strong>GVCC/GS</strong>: Giảng dạy 900h, KHCN 700h, Khác 160h</li><li>Tổng cộng: 1760h cho tất cả chức danh</li></ul>"},
+    {id:19, cat:"II. Chế độ làm việc CBGD", q:"Định mức giờ chuẩn giảng dạy đối với từng chức danh: GV, GVC/PGS, GS/GVCC?", a:"<ul><li><strong>Giáo sư và GVCC</strong>: 320 giờ chuẩn</li><li><strong>Phó giáo sư và GVC</strong>: 300 giờ chuẩn</li><li><strong>Giảng viên</strong>: 270 giờ chuẩn</li></ul>"},
+    {id:20, cat:"II. Chế độ làm việc CBGD", q:"GS và PGS phải dành bao nhiêu phần trăm định mức cho đào tạo sau đại học?", a:"<ul><li><strong>Giáo sư</strong>: ít nhất <strong>50%</strong> định mức (160 giờ chuẩn)</li><li><strong>Phó giáo sư</strong>: ít nhất <strong>40%</strong> định mức (120 giờ chuẩn)</li></ul>"},
+    {id:21, cat:"II. Chế độ làm việc CBGD", q:"Định mức giờ chuẩn KHCN đối với từng chức danh giảng dạy?", a:"<ul><li><strong>GS và GVCC</strong>: 420 giờ chuẩn</li><li><strong>PGS và GVC</strong>: 390 giờ chuẩn</li><li><strong>Giảng viên</strong>: 360 giờ chuẩn</li></ul>"},
+    {id:22, cat:"II. Chế độ làm việc CBGD", q:"Lộ trình thực hiện định mức giờ chuẩn KHCN qua các năm học?", a:"<ul><li>Năm học 2019-2020: định mức bằng <strong>50%</strong></li><li>Năm học 2020-2021: định mức bằng <strong>75%</strong></li><li>Từ năm học 2021-2022 trở đi: định mức bằng <strong>100%</strong></li></ul>"},
+    {id:23, cat:"II. Chế độ làm việc CBGD", q:"Tỷ lệ định mức giờ chuẩn (%) đối với Giám đốc, Chính ủy và Phó Giám đốc, Phó Chính ủy?", a:"<ul><li><strong>Giám đốc, Chính ủy</strong>: 10%</li><li><strong>Phó Giám đốc, Phó Chính ủy</strong>: 15%</li></ul>"},
+    {id:24, cat:"II. Chế độ làm việc CBGD", q:"Tỷ lệ định mức giờ chuẩn của Chủ nhiệm khoa khi giữ chức bí thư, phó bí thư đảng ủy, và còn lại?", a:"<ul><li>Giữ chức <strong>bí thư đảng ủy</strong>: 50%</li><li>Giữ chức <strong>phó bí thư đảng ủy</strong>: 60%</li><li><strong>Còn lại</strong>: 70%</li></ul>"},
+    {id:25, cat:"II. Chế độ làm việc CBGD", q:"Tỷ lệ định mức của Chủ nhiệm bộ môn khi giữ chức bí thư chi bộ và khi không giữ chức vụ Đảng?", a:"<ul><li>Giữ chức <strong>bí thư chi bộ</strong>: 75%</li><li><strong>Còn lại</strong>: 80%</li></ul>"},
+    {id:26, cat:"II. Chế độ làm việc CBGD", q:"CBGD nữ có con nhỏ dưới 36 tháng tuổi được miễn giảm bao nhiêu %? Giới hạn tối đa?", a:"Được giảm <strong>10%/01 con</strong>. Nếu tham gia nhiều chức vụ quản lý thì tổng miễn giảm không vượt quá <strong>60%</strong> tổng định mức giờ chuẩn."},
+    {id:27, cat:"II. Chế độ làm việc CBGD", q:"Trưởng nhóm nghiên cứu mạnh và thành viên nhóm được giảm bao nhiêu % định mức giờ chuẩn giảng dạy?", a:"<ul><li><strong>Trưởng nhóm</strong>: giảm 50% định mức giờ chuẩn giảng dạy</li><li><strong>Mỗi thành viên</strong>: giảm 15% định mức giờ chuẩn giảng dạy</li></ul>"},
+    {id:28, cat:"II. Chế độ làm việc CBGD", q:"CBGD chuyên trách tham gia nhiều chức vụ quản lý thì tổng miễn giảm tối đa bao nhiêu %?", a:"Không vượt quá <strong>50%</strong> tổng định mức giờ chuẩn."},
+    {id:29, cat:"II. Chế độ làm việc CBGD", q:"Số giờ vượt tải của CBGD không được vượt quá bao nhiêu % định mức trong năm học?", a:"Không vượt quá <strong>50%</strong> định mức giờ chuẩn trong năm học của cán bộ đó. Trường hợp đặc biệt do Giám đốc Học viện xem xét, quyết định."},
+    {id:30, cat:"II. Chế độ làm việc CBGD", q:"Khi CBGD chưa hoàn thành định mức giờ chuẩn giảng dạy thì xử lý thế nào?", a:"Lấy số <strong>vượt tải của giờ chuẩn KHCN</strong> bù vào định mức giảng dạy."},
+    {id:31, cat:"II. Chế độ làm việc CBGD", q:"Khi CBGD chưa hoàn thành định mức giờ chuẩn KHCN thì xử lý thế nào?", a:"Lấy số <strong>vượt tải của giờ chuẩn giảng dạy</strong> bù vào. Đồng thời Giám đốc Học viện tùy theo mức độ, hoàn cảnh cụ thể để xem xét khi đánh giá kết quả thực hiện nhiệm vụ."},
+    {id:32, cat:"III. Quy đổi giờ chuẩn", q:"Giảng dạy lý thuyết trong giảng đường: Lớp ≤ 75 HV, 76-100 HV, ≥ 101 HV được quy đổi bao nhiêu giờ chuẩn/tiết?", a:"<ul><li>Lớp <strong>≤ 75 HV</strong>: 1 giờ chuẩn/tiết</li><li>Lớp <strong>76-100 HV</strong>: 1,1 giờ chuẩn/tiết</li><li>Lớp <strong>≥ 101 HV</strong>: 1,2 giờ chuẩn/tiết</li></ul>"},
+    {id:33, cat:"III. Quy đổi giờ chuẩn", q:"Giảng dạy ngoài thao trường, bài tập, diễn tập cuối khóa, giảng dạy ban đêm được tính bao nhiêu giờ chuẩn/tiết?", a:"<strong>1,2 giờ chuẩn/tiết</strong> (trừ thời gian hành quân dã ngoại hoặc rèn luyện thể lực)."},
+    {id:34, cat:"III. Quy đổi giờ chuẩn", q:"Hướng dẫn bài tập, thí nghiệm, thực hành, thảo luận được tính bao nhiêu giờ chuẩn/tiết?", a:"<strong>0,7 giờ chuẩn/tiết</strong>."},
+    {id:35, cat:"III. Quy đổi giờ chuẩn", q:"Diễn tập, thực hành có bắn đạn thật được tính bao nhiêu giờ chuẩn/tiết?", a:"<strong>2 giờ chuẩn/tiết</strong>."},
+    {id:36, cat:"III. Quy đổi giờ chuẩn", q:"Công việc vào ngày nghỉ lễ và chủ nhật được tính hệ số bao nhiêu lần?", a:"Hệ số <strong>2,0 lần</strong> so với ngày thường tương ứng."},
+    {id:37, cat:"III. Quy đổi giờ chuẩn", q:"Dạy luyện thi Olympic được tính bao nhiêu giờ chuẩn/tiết?", a:"<strong>1,5 giờ chuẩn/tiết</strong>."},
+    {id:38, cat:"III. Quy đổi giờ chuẩn", q:"Giáo viên chuyên trách kiêm nhiệm cố vấn học tập được tính bao nhiêu giờ chuẩn/lớp?", a:"<strong>60 giờ chuẩn/lớp</strong>."},
+    {id:39, cat:"III. Quy đổi giờ chuẩn", q:"Hướng dẫn đồ án (khóa luận) tốt nghiệp được tính bao nhiêu giờ chuẩn/ĐA?", a:"<strong>25 giờ chuẩn/ĐA</strong>."},
+    {id:40, cat:"III. Quy đổi giờ chuẩn", q:"Chấm thi vấn đáp, thi viết, thi tốt nghiệp được tính bao nhiêu giờ chuẩn?", a:"<ul><li>Chấm thi <strong>vấn đáp</strong>: 0,3 giờ chuẩn/HV</li><li>Chấm thi <strong>viết</strong>: 0,25 giờ chuẩn/bài</li><li>Chấm thi <strong>tốt nghiệp</strong>: 0,5 giờ chuẩn/HV</li></ul>"},
+    {id:41, cat:"III. Quy đổi giờ chuẩn", q:"Xây dựng mới Chương trình đào tạo và Đề cương chi tiết học phần được tính bao nhiêu giờ chuẩn?", a:"<ul><li>Xây dựng mới <strong>CTĐT</strong>: 50 giờ chuẩn/CT</li><li>Xây dựng mới <strong>ĐCCTHP</strong>: 10 giờ chuẩn/TC</li><li>Sửa đổi, bổ sung ĐCCTHP: 5 giờ chuẩn/TC</li></ul>"},
+    {id:42, cat:"III. Quy đổi giờ chuẩn", q:"Giảng dạy cho cao học và tiến sĩ được tính bao nhiêu giờ chuẩn/tiết?", a:"<ul><li>Các học phần cho <strong>cao học</strong>: 1,5 giờ chuẩn/tiết</li><li>Các học phần cho <strong>tiến sĩ</strong>: 2 giờ chuẩn/tiết</li></ul>"},
+    {id:43, cat:"III. Quy đổi giờ chuẩn", q:"Hướng dẫn luận văn tốt nghiệp cao học được tính bao nhiêu giờ chuẩn?", a:"<strong>45 giờ chuẩn/luận văn</strong>."},
+    {id:44, cat:"III. Quy đổi giờ chuẩn", q:"Hướng dẫn NCS hệ tập trung (1 CBHD) và hệ không tập trung được tính bao nhiêu giờ chuẩn/NCS/năm?", a:"<ul><li>Hệ <strong>tập trung</strong> (1 CBHD): 65 giờ chuẩn/NCS/năm</li><li>Hệ <strong>không tập trung</strong> (1 CBHD): 50 giờ chuẩn/NCS/năm</li></ul>"},
+    {id:45, cat:"III. Quy đổi giờ chuẩn", q:"Dạy 100% bằng ngoại ngữ (không phải học phần ngoại ngữ) và dạy song ngữ được tính bao nhiêu giờ chuẩn/tiết?", a:"<ul><li>Dạy <strong>100% ngoại ngữ</strong>: 2 giờ chuẩn/tiết</li><li>Dạy <strong>song ngữ</strong>: 1,5 giờ chuẩn/tiết</li></ul>"},
+    {id:46, cat:"III. Quy đổi giờ chuẩn", q:"Bài báo đăng trên tạp chí ISI, Scopus và Hội nghị quốc tế được tính bao nhiêu giờ chuẩn?", a:"<ul><li>Tạp chí <strong>ISI</strong>: 280 giờ chuẩn/bài</li><li>Tạp chí <strong>Scopus</strong>: 230 giờ chuẩn/bài</li><li><strong>Kỷ yếu HNKH quốc tế</strong>: 200 giờ chuẩn/bài</li><li>Tạp chí <strong>trong nước ISSN</strong>: 150 giờ chuẩn/bài</li></ul>"},
+    {id:47, cat:"III. Quy đổi giờ chuẩn", q:"Bằng phát minh, bằng độc quyền sáng chế, bằng giải pháp hữu ích được tính bao nhiêu giờ chuẩn?", a:"<ul><li><strong>Bằng phát minh</strong>: 900 giờ chuẩn</li><li><strong>Độc quyền sáng chế</strong>: 400 giờ chuẩn</li><li><strong>Giải pháp hữu ích</strong>: 300 giờ chuẩn</li></ul>"},
+    {id:48, cat:"III. Quy đổi giờ chuẩn", q:"Giáo trình mới và giáo trình tái bản được tính bao nhiêu giờ chuẩn/trang tác giả?", a:"<ul><li><strong>Giáo trình mới</strong>: 1,2 giờ chuẩn/trang tác giả</li><li><strong>Giáo trình tái bản</strong> (có bổ sung, sửa đổi): 0,5 giờ chuẩn/trang tác giả</li><li><strong>Sách chuyên khảo</strong>: 2 giờ chuẩn/trang tác giả</li></ul>"},
+    {id:49, cat:"IV. GV tốt, GV giỏi", q:"Giảng viên giỏi mức 1 phải đạt bao nhiêu % tải giảng dạy và KHCN? Yêu cầu về công trình NCKH?", a:"<ul><li>Đạt từ <strong>100% tải giảng dạy</strong> trở lên, ≥ 2/3 tải TKB</li><li>Đạt từ <strong>100% tải KHCN</strong> trở lên</li><li>Có ít nhất <strong>02 công trình NCKH</strong> (trong đó có ít nhất 01 bài báo KH)</li><li>Đề tài NCKH phải nghiệm thu đạt khá trở lên</li></ul>"},
+    {id:50, cat:"IV. GV tốt, GV giỏi", q:"Giảng viên giỏi mức 2 phải đạt bao nhiêu % tải giảng dạy và KHCN?", a:"<ul><li>Đạt từ <strong>100% tải giảng dạy</strong>, ≥ 2/3 tải TKB</li><li>Đạt từ <strong>75% tải KHCN</strong> trở lên</li><li>Có ít nhất <strong>01 công trình NCKH</strong>, nghiệm thu khá trở lên</li></ul>"},
+    {id:51, cat:"IV. GV tốt, GV giỏi", q:"Tiêu chuẩn giảng viên tốt về tải giảng dạy và KHCN?", a:"<ul><li><strong>Giảng dạy</strong>: Đạt từ 100% trở lên, trong đó có ít nhất 45 tiết theo TKB</li><li><strong>KHCN</strong>: Đạt từ 50% trở lên</li><li>Có ít nhất 01 công trình NCKH</li></ul>"},
+    {id:52, cat:"IV. GV tốt, GV giỏi", q:"Quy định số lượng GV giỏi mức 1, mức 2 và GV tốt cho mỗi Khoa?", a:"<ul><li><strong>GV giỏi mức 1</strong>: Khoa &lt; 30 GV: 01 người; cứ 30 GV tiếp theo được bầu thêm 01</li><li><strong>GV giỏi mức 2</strong>: Không quá 8% tổng số GV của Khoa</li><li><strong>GV tốt</strong>: Không quá 10% tổng số GV của Khoa</li></ul>"},
+    {id:53, cat:"IV. GV tốt, GV giỏi", q:"Đối với Khoa Ngoại ngữ, BM Toán: nếu không có hoạt động KHCN thì tải giảng dạy phải đạt bao nhiêu %?", a:"Tải giảng dạy phải đạt từ <strong>150% định mức giờ chuẩn</strong> trở lên (trong đó đạt ≥ 100% tải TKB theo định mức)."},
+    {id:54, cat:"IV. GV tốt, GV giỏi", q:"GV phải có ít nhất bao nhiêu buổi dự giảng và xếp loại gì để được xét GV tốt/giỏi?", a:"Có ít nhất <strong>02 buổi dự giảng</strong>, tất cả các buổi dự giảng được đánh giá xếp loại <strong>tốt</strong>."},
+    {id:55, cat:"IV. GV tốt, GV giỏi", q:"Kết quả bình xét ở cấp BM, Khoa và HV phải đạt bao nhiêu phiếu tín nhiệm?", a:"Đạt ít nhất <strong>2/3 số phiếu tín nhiệm</strong> của Bộ môn, của Hội đồng KH&amp;ĐT cấp Khoa và cấp Học viện."},
+    {id:56, cat:"VI. Chuẩn ngoại ngữ", q:"Ngoại ngữ chính để đánh giá chuẩn năng lực ngoại ngữ tại HVKTQS là gì?", a:"<strong>Tiếng Anh</strong> là ngoại ngữ chính được sử dụng để đánh giá chuẩn năng lực ngoại ngữ của cán bộ, giáo viên."},
+    {id:57, cat:"VI. Chuẩn ngoại ngữ", q:"Từ 01/01/2019, chuẩn năng lực ngoại ngữ được đánh giá bằng các chứng chỉ nào?", a:"Các chứng chỉ tiếng Anh quốc tế: <strong>IELTS, TOEIC, TOEFL PBT, TOEFL CBT, TOEFL IBT, Cambridge Tests</strong> do các trung tâm ngoại ngữ là đại diện chính thức của các tổ chức khảo thí quốc tế tại Việt Nam cấp."},
+    {id:58, cat:"VI. Chuẩn ngoại ngữ", q:"GV dạy tiếng Anh có chức danh giảng viên phải đạt trình độ tiếng Anh bậc nào? Ngoại ngữ thứ hai?", a:"<ul><li>Tiếng Anh: <strong>C1</strong></li><li>Ngoại ngữ thứ hai: <strong>B1</strong></li></ul>"},
+    {id:59, cat:"VI. Chuẩn ngoại ngữ", q:"GV dạy tiếng Anh có chức danh GVC, GVCC, TS, PGS, GS phải đạt trình độ tiếng Anh bậc nào?", a:"<ul><li>Tiếng Anh: <strong>C2</strong></li><li>Ngoại ngữ thứ hai: <strong>B1</strong></li></ul>"},
+    {id:60, cat:"VI. Chuẩn ngoại ngữ", q:"GV dạy các ngành khác: GV phải đạt bậc nào? GVC, PGS, GS phải đạt bậc nào?", a:"<ul><li><strong>Giảng viên</strong>: Tiếng Anh <strong>B1</strong></li><li><strong>GVC, GVCC, TS, PGS, GS</strong>: Tiếng Anh <strong>B2</strong></li></ul>"},
+    {id:61, cat:"VI. Chuẩn ngoại ngữ", q:"Cán bộ Phòng HTQT phải đạt trình độ tiếng Anh bậc nào? Tỷ lệ quân số đạt B2?", a:"Trên <strong>50% quân số</strong> phải đạt <strong>B2</strong>. Trưởng phòng và Trưởng ban trong vòng 03 năm giữ chức phải đạt B2, số còn lại phải đạt <strong>B1</strong>."},
+    {id:62, cat:"VI. Chuẩn ngoại ngữ", q:"Nêu các trường hợp được miễn đánh giá chuẩn năng lực ngoại ngữ.", a:"<ul><li>Có bằng ĐH/ThS/TS ở nước ngoài (tiếng Anh), thời hạn không quá 5 năm</li><li>Có chứng chỉ tiếng Anh tương ứng còn giá trị</li><li>Có bằng ĐH ngoại ngữ tiếng Anh hệ chính quy, không quá 5 năm</li><li>GV dạy ngoại ngữ: nam ≥ 55 tuổi, nữ ≥ 50 tuổi</li><li>CB dạy các ngành khác: từ 48 tuổi trở lên</li></ul>"},
+    {id:63, cat:"VI. Chuẩn ngoại ngữ", q:"Hậu quả khi CBGV không đạt chuẩn ngoại ngữ?", a:"<ul><li>Không xét đi đào tạo ThS (nếu không có B1), TS (nếu không có B2)</li><li>Không xét chức danh SQ CM-KT-NV, GS, PGS, danh hiệu nhà giáo, thi đua khen thưởng</li><li>Mỗi lần không đạt: kéo dài niên hạn quân hàm hoặc hệ số lương thêm 01 năm</li><li>Sau 03 lần liên tiếp không đạt: xem xét điều chuyển công tác</li></ul>"},
+    {id:64, cat:"VI. Chuẩn ngoại ngữ", q:"Điểm IELTS tối thiểu để đạt B1, B2, C1, C2?", a:"<ul><li><strong>B1</strong>: IELTS 4.5</li><li><strong>B2</strong>: IELTS 5.5</li><li><strong>C1</strong>: IELTS 6.5</li><li><strong>C2</strong>: IELTS 7.5+</li></ul>"},
+    {id:65, cat:"VI. Chuẩn ngoại ngữ", q:"Điểm TOEIC tối thiểu để đạt B1, B2, C1?", a:"<ul><li><strong>B1</strong>: TOEIC 450</li><li><strong>B2</strong>: TOEIC 600</li><li><strong>C1</strong>: TOEIC 850</li></ul>"},
+    {id:66, cat:"VII. Chuẩn CNTT", q:"Đối tượng áp dụng Quy định chuẩn kỹ năng CNTT? Giới hạn tuổi?", a:"Cán bộ giảng dạy chuyên trách, cán bộ giảng dạy kiêm nhiệm tại Học viện KTQS có <strong>tuổi đời dưới 48 tuổi</strong>."},
+    {id:67, cat:"VII. Chuẩn CNTT", q:"Chuẩn kỹ năng CNTT cơ bản gồm bao nhiêu mô đun? Kể tên.", a:"Gồm <strong>06 mô đun</strong>: IU01 (Hiểu biết CNTT cơ bản), IU02 (Sử dụng máy tính cơ bản), IU03 (Xử lý văn bản cơ bản), IU04 (Sử dụng bảng tính cơ bản), IU05 (Sử dụng trình chiếu cơ bản), IU06 (Sử dụng Internet cơ bản)."},
+    {id:68, cat:"VII. Chuẩn CNTT", q:"Để đạt chuẩn CNTT nâng cao phải đạt bao nhiêu mô đun nâng cao (trên nền CNTT cơ bản)?", a:"Phải đạt chuẩn CNTT cơ bản và đồng thời đáp ứng yêu cầu của tối thiểu <strong>03 mô đun</strong> trong số 09 mô đun nâng cao."},
+    {id:69, cat:"VII. Chuẩn CNTT", q:"CBGD Khoa Ngoại ngữ, Khoa Mác-Lênin, Khoa CTĐ-CTCT, Khoa Quân sự phải đạt chuẩn CNTT nào?", a:"Phải đạt <strong>Chuẩn kỹ năng CNTT cơ bản</strong>."},
+    {id:70, cat:"VII. Chuẩn CNTT", q:"CBGD các đơn vị còn lại phải đạt chuẩn CNTT nào?", a:"Phải đạt <strong>Chuẩn kỹ năng CNTT nâng cao</strong>."},
+    {id:71, cat:"VIII. NGND, NGƯT", q:"Nhà giáo Nhân dân phải có thời gian trực tiếp giảng dạy từ bao nhiêu năm? Cán bộ QLGD từ bao nhiêu năm?", a:"<ul><li>Nhà giáo: trực tiếp giảng dạy từ <strong>20 năm</strong> trở lên</li><li>Cán bộ QLGD: công tác trong ngành từ <strong>25 năm</strong>, trong đó có 15 năm trực tiếp giảng dạy</li></ul>"},
+    {id:72, cat:"VIII. NGND, NGƯT", q:"Nhà giáo Ưu tú phải có thời gian trực tiếp giảng dạy từ bao nhiêu năm? Đã bao nhiêu lần được tặng CSTĐ cơ sở?", a:"<ul><li>Trực tiếp giảng dạy từ <strong>15 năm</strong> trở lên</li><li><strong>07 lần</strong> được tặng danh hiệu CSTĐ cơ sở hoặc GV dạy giỏi cùng cấp</li><li>01 lần CSTĐ cấp tỉnh, bộ và 01 lần Bằng khen cấp tỉnh, bộ</li></ul>"},
+    {id:73, cat:"VIII. NGND, NGƯT", q:"Đối với giảng viên ĐH, yêu cầu về sáng kiến, đề tài, giáo trình, bài báo để được xét NGƯT?", a:"<ul><li>Chủ trì 03 sáng kiến hoặc 02 đề tài cấp tỉnh/bộ</li><li>Chủ biên 01 giáo trình hoặc tham gia 02 giáo trình</li><li>Tác giả chính 05 bài báo khoa học</li><li>Hướng dẫn chính 02 NCS hoặc 05 học viên cao học bảo vệ thành công</li></ul>"},
+    {id:74, cat:"IX. Quy chế bộ môn", q:"Bộ môn được xác định ở vị trí nào trong hệ thống tổ chức của Học viện?", a:"Bộ môn là <strong>tổ chức hành chính cấp thứ ba</strong> trong hệ thống tổ chức của Học viện; là <strong>tổ chức học thuật cao nhất</strong> thuộc lĩnh vực chuyên ngành và là đơn vị cơ sở tổ chức thực hiện các hoạt động đào tạo, NCKH."},
+    {id:75, cat:"IX. Quy chế bộ môn", q:"Nêu 2 chức năng chính của bộ môn.", a:"<ul><li>Tham mưu, đề xuất định hướng và trực tiếp triển khai các hoạt động đào tạo, NCKH và các hoạt động học thuật</li><li>Xây dựng đội ngũ giáo viên, nhân viên chuyên môn kỹ thuật và cơ sở vật chất đáp ứng yêu cầu nhiệm vụ</li></ul>"},
+    {id:76, cat:"IX. Quy chế bộ môn", q:"Bộ môn có được phép tạo lập quỹ từ các đề tài, dự án NCKH không? Điều kiện?", a:"<strong>Có</strong>. Bộ môn được phép tạo lập quỹ từ các đề tài, dự án NCKH, hợp đồng dịch vụ KHCN để sử dụng cho việc phát triển NCKH. Việc lập và sử dụng quỹ phải <strong>công khai, minh bạch</strong> và tuân theo quy định về quản lý tài chính."},
+    {id:77, cat:"IX. Quy chế bộ môn", q:"Chế độ làm việc của bộ môn: đầu năm học, hàng tuần, vai trò CN BM?", a:"<ul><li><strong>Đầu năm học</strong>: xây dựng kế hoạch năm học, phân công nhiệm vụ</li><li><strong>Hàng tuần</strong>: tổ chức giao ban theo quy định</li><li><strong>CN BM</strong>: chủ trì và chịu trách nhiệm mọi hoạt động của BM, tập trung chỉ đạo phát triển chuyên môn, học thuật</li></ul>"},
+    {id:78, cat:"IX. Quy chế bộ môn", q:"Mối quan hệ giữa bộ môn với khoa, các cơ quan trong HV và đơn vị quản lý học viên?", a:"<ul><li>Với Khoa: <strong>quan hệ cấp trên - cấp dưới</strong> (chịu sự chỉ huy trực tiếp của BCN Khoa)</li><li>Với các cơ quan HV: chịu sự <strong>hướng dẫn, kiểm tra, giám sát</strong> theo chức năng</li><li>Với đơn vị QLHV: <strong>quan hệ phối hợp</strong></li></ul>"},
+    {id:79, cat:"X. Chế độ mời giảng", q:"Chế độ mời giảng được thực hiện khi nào (3 điều kiện)?", a:"<ul><li>Đội ngũ GV cơ hữu có tổng giờ giảng vượt quá <strong>2 lần tổng định mức</strong> giờ chuẩn giảng dạy của BM/nhóm môn học</li><li>Môn học mới mà Học viện <strong>chưa có giáo viên</strong> giảng dạy</li><li>Các trường hợp đặc biệt do <strong>Giám đốc Học viện</strong> quyết định</li></ul>"},
+    {id:80, cat:"X. Chế độ mời giảng", q:"Tiêu chuẩn của giáo viên mời giảng là gì?", a:"<ul><li>Lý lịch rõ ràng, phẩm chất chính trị, tư cách đạo đức tốt, khả năng sư phạm phù hợp</li><li>Trong 3 năm gần nhất tham gia hoạt động chuyên môn liên quan</li><li>Có chức danh GS, PGS và GVC hoặc học vị TSKH, tiến sĩ</li></ul>"},
+    {id:81, cat:"XI. CTĐT Thạc sĩ", q:"Thời lượng CTĐT thạc sĩ là bao lâu? Bao nhiêu tín chỉ?", a:"<strong>02 năm</strong>, <strong>60-65 tín chỉ</strong> (cho cả định hướng ứng dụng và định hướng nghiên cứu)."},
+    {id:82, cat:"XI. CTĐT Thạc sĩ", q:"Một tín chỉ được tính bằng bao nhiêu tiết lý thuyết hoặc thực hành?", a:"<strong>15 tiết lý thuyết</strong> hoặc <strong>30 tiết thực hành</strong>, thí nghiệm, bài tập, thảo luận, tiểu luận."},
+    {id:83, cat:"XI. CTĐT Thạc sĩ", q:"Số tín chỉ dành cho luận văn tốt nghiệp thạc sĩ là bao nhiêu?", a:"<strong>12 tín chỉ</strong>."},
+    {id:84, cat:"XII. CTĐT Tiến sĩ", q:"Chương trình đào tạo tiến sĩ gồm bao nhiêu phần? Kể tên.", a:"Gồm <strong>3 phần</strong>: <ul><li>Phần 1: Các học phần bổ sung</li><li>Phần 2: Các học phần trình độ TS, tiểu luận tổng quan và chuyên đề TS</li><li>Phần 3: Luận án tiến sĩ</li></ul>"},
+    {id:85, cat:"XII. CTĐT Tiến sĩ", q:"Thời gian đào tạo tiến sĩ: người có bằng ThS và người có bằng ĐH?", a:"<ul><li>Người có bằng <strong>thạc sĩ</strong>: <strong>3 năm</strong> tập trung liên tục</li><li>Người có bằng <strong>đại học</strong>: <strong>4 năm</strong> tập trung liên tục</li></ul>"},
+    {id:86, cat:"XII. CTĐT Tiến sĩ", q:"Tổng số tín chỉ tối thiểu cho NCS chưa có bằng ThS và đã có bằng ThS?", a:"<ul><li>NCS <strong>chưa có bằng ThS</strong>: tối thiểu <strong>120 TC</strong></li><li>NCS <strong>đã có bằng ThS</strong>: tối thiểu <strong>90 TC</strong></li></ul>"},
+    {id:87, cat:"XII. CTĐT Tiến sĩ", q:"Luận án tiến sĩ có khối lượng tối đa bao nhiêu trang A4? Bao nhiêu % là kết quả nghiên cứu riêng?", a:"Không quá <strong>150 trang A4</strong> (không kể phụ lục), trong đó trên <strong>50%</strong> là trình bày các kết quả nghiên cứu và biện luận của riêng NCS."},
+    {id:88, cat:"XII. CTĐT Tiến sĩ", q:"NCS phải công bố tối thiểu bao nhiêu bài báo/báo cáo KH? Yêu cầu về bài báo quốc tế?", a:"Tối thiểu <strong>02 bài báo hoặc báo cáo KH</strong>, trong đó có <strong>01 báo cáo KH đăng trong kỷ yếu hội thảo quốc tế có phản biện</strong> hoặc 01 bài báo trên tạp chí KH nước ngoài có phản biện."},
+    {id:89, cat:"XV. Bảo vệ LVTS", q:"Hội đồng chấm LVTS KHÔNG đủ điều kiện làm việc trong những trường hợp nào?", a:"<ul><li>Vắng mặt <strong>Chủ tịch</strong> Hội đồng</li><li>Vắng mặt <strong>Thư ký</strong> Hội đồng</li><li>Vắng mặt thành viên có ý kiến <strong>không đồng ý</strong> đưa luận văn ra bảo vệ</li><li>Vắng mặt từ <strong>02 thành viên</strong> trở lên</li><li>Học viên không đủ sức khỏe</li></ul>"},
+    {id:90, cat:"XV. Bảo vệ LVTS", q:"Điểm luận văn được cho tối đa bao nhiêu điểm? Điểm trình bày? Điểm công trình NCKH?", a:"<ul><li>Điểm luận văn: tối đa <strong>8,5 điểm</strong></li><li>Điểm trình bày: tối đa <strong>0,5 điểm</strong></li><li>Điểm công trình NCKH: tối đa <strong>1,0 điểm</strong> (bài ISI/Scopus) hoặc 0,7 hoặc 0,5 tùy cấp độ</li></ul>"},
+    {id:91, cat:"XV. Bảo vệ LVTS", q:"Luận văn đạt yêu cầu khi điểm đạt từ bao nhiêu trở lên?", a:"Đạt từ <strong>5,5 điểm</strong> trở lên."},
+    {id:92, cat:"XV. Bảo vệ LVTS", q:"Chỉ cộng điểm NCKH khi điểm luận văn và trình bày đạt từ bao nhiêu điểm trở lên?", a:"Đạt từ <strong>8,0 điểm</strong> trở lên (khuyến nghị của Học viện)."},
+    {id:93, cat:"XV. Bảo vệ LVTS", q:"Trong vòng bao nhiêu ngày sau bảo vệ, học viên phải chỉnh sửa luận văn và nộp thư viện?", a:"Trong vòng <strong>15 ngày</strong> kể từ ngày bảo vệ luận văn."},
+    {id:94, cat:"XVI. Thi & chấm thi", q:"Kể tên các hình thức thi kết thúc học phần tại HVKTQS.", a:"Thi tự luận; thi vấn đáp; thi trắc nghiệm; trắc nghiệm kết hợp tự luận; thi trực tuyến trên máy tính; bài tập tổng hợp; thi các kỹ năng nghe, nói, đọc, viết (ngoại ngữ); báo cáo, thực hành, bảo vệ đồ án."},
+    {id:95, cat:"XVI. Thi & chấm thi", q:"Đối với thi vấn đáp, mỗi bàn hỏi thi không quá bao nhiêu HVSV/buổi? Bao nhiêu giáo viên/bàn?", a:"Mỗi bàn hỏi thi không quá <strong>25 HVSV/buổi</strong>. Mỗi bàn phải đảm bảo <strong>02 giáo viên</strong> cùng nhóm môn học."},
+    {id:96, cat:"XVI. Thi & chấm thi", q:"Số lượng mã đề thi tối thiểu: tự luận và trắc nghiệm trên giấy?", a:"<ul><li><strong>Tự luận</strong>: không ít hơn 02 mã đề thi</li><li><strong>Trắc nghiệm trên giấy</strong>: không ít hơn 04 mã đề thi</li></ul>"},
+    {id:97, cat:"XVI. Thi & chấm thi", q:"Điểm bài thi được chấm theo thang điểm nào? Làm tròn đến bao nhiêu?", a:"Thang điểm <strong>10</strong> (từ 0 đến 10), điểm bài thi làm tròn đến <strong>0,5 điểm</strong>."},
+    {id:98, cat:"XVI. Thi & chấm thi", q:"Tất cả bài thi phải được chấm bao nhiêu vòng?", a:"<strong>2 vòng</strong> độc lập: Vòng 1 chấm trên <strong>phiếu chấm</strong>, Vòng 2 chấm trực tiếp vào <strong>bài thi</strong>."},
+    {id:99, cat:"XVI. Thi & chấm thi", q:"Hình thức thi nào KHÔNG được sử dụng khi thi lại?", a:"Không sử dụng hình thức thi <strong>vấn đáp</strong>."},
+    {id:100, cat:"XVI. Thi & chấm thi", q:"Khi HVSV vi phạm quy chế thi, mức trừ điểm: khiển trách, cảnh cáo, đình chỉ thi?", a:"<ul><li><strong>Khiển trách</strong>: Trừ 25% điểm bài thi</li><li><strong>Cảnh cáo</strong>: Trừ 50% điểm bài thi</li><li><strong>Đình chỉ thi</strong>: Bài thi cho 0 điểm</li></ul>"},
+    {id:101, cat:"XVI. Thi & chấm thi", q:"Thời hạn nộp đơn đề nghị xem xét lại điểm thi là bao nhiêu ngày?", a:"Trong vòng <strong>15 ngày</strong> sau khi công bố điểm."},
+    {id:102, cat:"XVII. Chấm thi 2 vòng", q:"Khi điểm 2 lần chấm lệch dưới 0,5đ (KHTN) hoặc dưới 1,0đ (KHXH) thì xử lý thế nào?", a:"Hai cán bộ chấm thi <strong>thảo luận thống nhất điểm</strong>, ghi điểm và ký vào bài thi."},
+    {id:103, cat:"XVII. Chấm thi 2 vòng", q:"Khi điểm 2 lần chấm lệch từ 0,5 đến 1,0đ (KHTN) hoặc từ 1,0 đến 1,5đ (KHXH) thì xử lý thế nào?", a:"Hai CBChT thảo luận và ghi lại bằng <strong>biên bản</strong>, báo cáo <strong>Trưởng nhóm môn học</strong> để thống nhất điểm. Nếu không thống nhất được thì Trưởng nhóm môn học quyết định điểm."},
+    {id:104, cat:"XVII. Chấm thi 2 vòng", q:"Khi điểm 2 lần chấm lệch trên 1,0đ (KHTN) hoặc trên 1,5đ (KHXH) thì làm gì?", a:"Trưởng nhóm môn học tổ chức <strong>chấm lần thứ 3</strong> trực tiếp vào bài thi bằng mực màu khác."},
+    {id:105, cat:"XVII. Chấm thi 2 vòng", q:"Khi kết quả 3 lần chấm lệch trên 2,0đ (KHTN) hoặc trên 2,5đ (KHXH) thì xử lý thế nào?", a:"Trưởng nhóm môn học tổ chức <strong>chấm tập thể</strong>. Các CBChT và Trưởng nhóm môn học ghi rõ họ tên và ký vào bài thi. Điểm chấm lần này là điểm <strong>chính thức</strong>."},
+    {id:106, cat:"XVIII. ĐATN ngoài HV", q:"Yêu cầu về trình độ đối với cán bộ ngoài HV tham gia hướng dẫn chính ĐATN?", a:"Có học vị từ <strong>thạc sỹ trở lên</strong> và có ít nhất <strong>10 năm kinh nghiệm</strong> hoạt động trong lĩnh vực chuyên ngành. Giảng viên Học viện tham gia hướng dẫn phụ."},
+    {id:107, cat:"XVIII. ĐATN ngoài HV", q:"Yêu cầu đối với cán bộ ngoài HV tham gia hướng dẫn phụ ĐATN?", a:"Có trình độ từ <strong>kỹ sư trở lên</strong> và có ít nhất <strong>05 năm kinh nghiệm</strong> hoạt động trong lĩnh vực chuyên ngành. Giảng viên Học viện tham gia hướng dẫn chính."},
+    {id:108, cat:"XVIII. ĐATN ngoài HV", q:"Số lượng ủy viên mời ngoài HV tham gia tiểu ban chấm bảo vệ ĐATN?", a:"<strong>01 người/tiểu ban</strong>."},
+    {id:109, cat:"XIII. HD ngoại ngữ - QH", q:"Thời điểm áp dụng hướng dẫn ngoại ngữ khi xét đề bạt quân hàm, nâng lương?", a:"Áp dụng từ <strong>năm 2020</strong>. Tại thời điểm xét duyệt của Thường vụ Đảng ủy Học viện (thường vào phiên họp tháng 3 hàng năm)."},
+    {id:110, cat:"XIII. HD ngoại ngữ - QH", q:"Từ năm 2021, tất cả Phòng Ban (trừ Phòng HTQT) phải đạt trình độ tiếng Anh bậc nào?", a:"Phải đạt trình độ tiếng Anh <strong>A2</strong> (theo điều chỉnh của Cục Nhà trường, Bộ Tổng tham mưu)."},
+    {id:111, cat:"XIII. HD ngoại ngữ - QH", q:"Thời hạn sử dụng của chứng chỉ ngoại ngữ không quy định thời hạn là bao nhiêu?", a:"Học viện thống nhất thời hạn sử dụng là <strong>02 năm</strong>."},
+    {id:112, cat:"XIII. HD ngoại ngữ - QH", q:"Từ năm 2026, khi chứng chỉ hết hạn, cán bộ phải trình chứng chỉ mới trong tối đa bao nhiêu tháng?", a:"Tối đa <strong>36 tháng</strong> kể từ ngày chứng chỉ cũ hết thời hạn."},
+    {id:113, cat:"XIV. HD chức danh SQ", q:"Ứng viên xét chức danh Giảng viên (dạy các ngành khác) phải có chứng chỉ tiếng Anh quốc tế bậc nào?", a:"Phải có chứng chỉ <strong>B1</strong> tiếng Anh quốc tế còn thời hạn."},
+    {id:114, cat:"XIV. HD chức danh SQ", q:"Ứng viên xét chức danh GVC, GVCC phải có chứng chỉ tiếng Anh quốc tế bậc nào?", a:"Phải có chứng chỉ <strong>B2</strong> tiếng Anh quốc tế còn thời hạn."},
+    {id:115, cat:"XIV. HD chức danh SQ", q:"Các chứng chỉ tiếng Anh quốc tế được chấp nhận gồm những gì?", a:"<strong>IELTS, TOEIC, TOEFL (PBT, CBT, IBT), Cambridge Test</strong>."}
     ];
 
-    // State
     let currentIndex = 0;
     let filteredCards = [...flashcards];
     let isFlipped = false;
@@ -600,18 +452,16 @@
     let viewed = JSON.parse(localStorage.getItem('quyche_viewed') || '[]');
     let showingBookmarked = false;
 
-    // Get unique categories
     const categories = [...new Set(flashcards.map(c => c.cat))];
     const categorySelect = document.getElementById('categoryFilter');
     categories.forEach(cat => {
         const count = flashcards.filter(c => c.cat === cat).length;
         const opt = document.createElement('option');
         opt.value = cat;
-        opt.textContent = `${cat} (${count} cau)`;
+        opt.textContent = `${cat} (${count} câu)`;
         categorySelect.appendChild(opt);
     });
 
-    // Event listeners
     categorySelect.addEventListener('change', filterCards);
     document.getElementById('searchInput').addEventListener('input', filterCards);
 
@@ -630,13 +480,11 @@
     }
 
     function showBookmarked() {
-        if (bookmarks.length === 0) { alert('Chua co cau hoi nao duoc danh dau!'); return; }
+        if (bookmarks.length === 0) { alert('Chưa có câu hỏi nào được đánh dấu!'); return; }
         showingBookmarked = !showingBookmarked;
         if (showingBookmarked) {
             filteredCards = flashcards.filter(c => bookmarks.includes(c.id));
-        } else {
-            filterCards(); return;
-        }
+        } else { filterCards(); return; }
         currentIndex = 0;
         isFlipped = false;
         updateDisplay();
@@ -694,7 +542,7 @@
     }
 
     function resetProgress() {
-        if (confirm('Ban co chac chan muon dat lai tien trinh?')) {
+        if (confirm('Bạn có chắc chắn muốn đặt lại tiến trình?')) {
             viewed = [];
             bookmarks = [];
             localStorage.removeItem('quyche_viewed');
@@ -719,8 +567,8 @@
         isFlipped = false;
         document.getElementById('cardCategory').textContent = card.cat;
         document.getElementById('cardCategoryBack').textContent = card.cat;
-        document.getElementById('cardNumber').textContent = `Cau ${card.id} / 115`;
-        document.getElementById('cardNumberBack').textContent = `Cau ${card.id} / 115`;
+        document.getElementById('cardNumber').textContent = `Câu ${card.id} / 115`;
+        document.getElementById('cardNumberBack').textContent = `Câu ${card.id} / 115`;
         document.getElementById('cardQuestion').textContent = card.q;
         document.getElementById('cardAnswer').innerHTML = card.a;
         const bmBtn = document.getElementById('bookmarkBtn');
@@ -751,7 +599,7 @@
                 <div class="list-question" onclick="toggleListItem(${i})">
                     <div class="list-num">${card.id}</div>
                     <div class="list-q-text">${card.q}</div>
-                    <div class="list-toggle">&#9660;</div>
+                    <div class="list-toggle">▼</div>
                 </div>
                 <div class="list-answer">
                     <div class="list-answer-content">${card.a}</div>
@@ -772,7 +620,6 @@
         }
     }
 
-    // Keyboard shortcuts
     document.addEventListener('keydown', e => {
         if (e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT') return;
         if (e.code === 'Space') { e.preventDefault(); flipCard(); }
@@ -782,7 +629,6 @@
         else if (e.code === 'KeyS') shuffleCards();
     });
 
-    // Touch swipe
     let touchStartX = 0;
     document.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; });
     document.addEventListener('touchend', e => {
@@ -790,9 +636,7 @@
         if (Math.abs(diff) > 50) { diff > 0 ? prevCard() : nextCard(); }
     });
 
-    // Init
     updateDisplay();
     </script>
 </body>
 </html>
-
